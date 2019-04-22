@@ -1,0 +1,232 @@
+@font-face {
+    font-family: 'slkscr';
+    src: url("slkscr.ttf");
+  }
+  
+  body {
+    font-family: 'slkscr';
+    overflow: hidden;
+  }
+  
+  img {
+    display: inline-block;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: #E45C00;
+  }
+  
+  a:visited {
+    color: #2A1707;
+  }
+  
+  .nav {
+    height: 30px;
+    width: 25px;
+    background: linear-gradient(to top, peachpuff, peachpuff, white); 
+    background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
+    border-radius: 5px;
+    border: 2px solid #2A1707;
+    margin: 10px;
+    font-family: 'slkscr';
+    color: #2A1707;
+  }
+  
+
+  .leftColumn {
+  
+    position: relative;
+  
+    float: left;
+    height: 99vh;
+    width: calc(100% - 315px);
+  }
+  
+  .rightColumn {
+  
+    float: right;
+    height: 99vh;
+    width: 300px;
+  }
+  
+  .container {
+    height: 97vh;
+    width: 99.8%;
+    background: 
+    repeating-linear-gradient(rgb(193, 156, 123, .3), rgb(193, 156, 123, .3) 25px, transparent 25px, transparent 50px),
+    repeating-linear-gradient( 90deg, rgb(193, 156, 123, .3), rgb(193, 156, 123, .3) 25px, transparent 25px, transparent 50px);
+    background-color: peachpuff ;
+
+  }
+  
+  .board {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;  
+    height: 500px;
+    width: 700px;
+    margin: auto;
+    font-size: 0;
+    
+    border: 25px solid transparent;
+    -moz-border-image: url(./img/framework.png) 25 round;
+    -webkit-border-image: url(./img/framework.png) 25 round; 
+    -o-border-image: url(./img/framework.png) 25 round;
+    border-image: url(./img/framework.png) 25 round;
+    background-color: peachpuff ;
+  
+  }
+  
+  .toPlay, .speedRPS, .rabbitsToWin, .difficultyLevel, .technologyStack, .github, .offerAJob {
+    position: relative;
+    border: 2px solid brown;
+    width: 278px;
+    margin: 10px;
+    font-size: 16px;
+    line-height: 22px;
+  
+  }
+  
+  .info {
+    font-size: 22px;
+    font-weight: bold;
+    color: #E45C00;
+  }
+  
+  .sound {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border: 2px solid brown;
+    top: 15px;
+    right: 15px;
+    border-radius: 5px;
+    border: 2px solid #2A1707;
+  
+  }
+  
+  .playing {
+    cursor: none; 
+  }
+  
+  
+  .head, .body, .bodyCurve, .tail, .rabbit, .bang {
+    position: absolute;
+  }
+  
+  .head {
+    z-index: 9;
+  }
+  
+  .bang {
+    z-index: 10;
+  }
+  
+  .left {
+    transform: rotate(90deg);
+  }
+  
+  .right {
+    transform: rotate(270deg);
+  }
+  
+  .up {
+    transform: rotate(180deg);
+  }
+  
+  .up-right, .right-up {
+    transform: rotate(180deg);  
+  }
+  
+  .left-up, .up-left {
+    transform: rotate(90deg);  
+  }
+  
+  .right-down, .down-right {
+    transform: rotate(270deg);
+  }
+  
+  .message {
+    display: block;
+    position: absolute;
+    height: 200px;
+    width: 700px;
+    font-family: 'slkscr';
+    font-size: 100px;
+    color: #2A1707;
+    text-align: center;
+    margin-top: 75px;
+  
+  }
+  
+  .message.long {
+    font-size: 65px !important;
+    
+  }
+  
+  .start-menu-container {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%); 
+    margin-top: 250px; 
+  }
+  
+  #level {
+    position: relative;
+    height: 30px;
+    width: 150px;
+    margin: 10px;
+    background: linear-gradient(to top, peachpuff, peachpuff, white); 
+    background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
+    border-radius: 5px;
+    border: 2px solid #2A1707;
+    text-align: center;
+    line-height: 30px;
+    font-family: 'slkscr';
+    font-size: 20px;
+    color: #2A1707;
+  
+  }
+  
+  #leveldown, #levelup {
+    height: 30px;
+    width: 25px;
+    background: linear-gradient(to top, peachpuff, peachpuff, white); 
+    background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
+    border-radius: 5px;
+    border: 2px solid #2A1707;
+    margin: 10px;
+    font-family: 'slkscr';
+    color: #2A1707;
+  
+  }
+  
+  
+  #leveldown, #level {
+    float: left;
+    position: relative;
+  }
+  
+  #startButton {
+    display: block;
+    position: relative;
+    height: 32px;
+    width: 245px;
+    margin: 10px;
+    background: linear-gradient(to top, peachpuff, peachpuff, white); 
+    background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
+    border-radius: 5px;
+    border: 2px solid #2A1707;
+    text-align: center;
+    line-height: 30px;
+    font-family: 'slkscr';
+    font-size: 20px;
+    color: #2A1707;
+  
+  }
+  
+  
+  
