@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+import rabbitsToWin from './setRabbitsToWin';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  rabbitsToWin,
+});
 
 export default rootReducer;

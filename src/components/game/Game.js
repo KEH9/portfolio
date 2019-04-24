@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import './Game.css';
 
 import StartMenu from './StartMenu';
@@ -21,7 +23,7 @@ import soundOff from './img/sound-off.jpg';
 * Main class includes game board and everything on it
 */
 
-export default class Game extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -130,9 +132,10 @@ export default class Game extends Component {
       rabbitsToWin: this.winCondition,
     });
 
+
     this.ticCounter = 0;
     this.currentMoveConnecton = 'left'; // direction of the snake head (direction where head attach to other piece)
-    this.nextMoveConnection = 'left'; // same in the nex move
+    this.nextMoveConnection = 'left'; // same in the next move
     this.lastHeadConnection = 'left'; // same in the tic before
     this.snake = React.createRef();
     this.rabbitX = '';
@@ -767,6 +770,7 @@ export default class Game extends Component {
             You have to eat
             <span className="info"> {this.state.rabbitsToWin} </span>
             more rabbits to win
+            <span className="info"> ! {this.props.rabbitsToWin} ! </span>
           </div>
 
           <div className="technologyStack">
@@ -801,3 +805,14 @@ export default class Game extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  console.log(state.rabbitsToWin);
+  return {
+    rabbitsToWin: state.rabbitsToWin,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+)(Game);
