@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { setRabbitsToWin } from '../../actions/actionCeator';
+
 import './Game.css';
 
 import StartMenu from './StartMenu';
@@ -132,6 +134,7 @@ class Game extends Component {
       rabbitsToWin: this.winCondition,
     });
 
+    this.props.setRabbitsToWin(this.winCondition);
 
     this.ticCounter = 0;
     this.currentMoveConnecton = 'left'; // direction of the snake head (direction where head attach to other piece)
@@ -204,11 +207,13 @@ class Game extends Component {
       this.setState({
         rabbitsToWin: 120,
       });
+      this.props.setRabbitsToWin(120);
     } else if (this.difficultyLevel === 'newbie') {
       this.difficultyLevel = 'veteran';
       this.setState({
         rabbitsToWin: 100,
       });
+      this.props.setRabbitsToWin(100);
     }
     this.chooseLevel = (
       <StartMenu
@@ -229,11 +234,13 @@ class Game extends Component {
       this.setState({
         rabbitsToWin: 65,
       });
+      this.props.setRabbitsToWin(65);
     } else if (this.difficultyLevel === 'ace') {
       this.difficultyLevel = 'veteran';
       this.setState({
         rabbitsToWin: 100,
       });
+      this.props.setRabbitsToWin(100);
     }
 
 
@@ -336,6 +343,7 @@ class Game extends Component {
     this.setState({
       rabbitsToWin: (this.winCondition - this.rabbitsEaten),
     });
+    this.props.setRabbitsToWin(this.winCondition - this.rabbitsEaten);
 
     if (this.rabbitsEaten === this.winCondition) {
       this.congratulations();
@@ -806,13 +814,15 @@ class Game extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log(state.rabbitsToWin);
-  return {
-    rabbitsToWin: state.rabbitsToWin,
-  };
-};
+const mapStateToProps = state => ({
+  rabbitsToWin: state.rabbitsToWin,
+});
+
+const mapDispatchToProps = dispatch => ({
+  setRabbitsToWin: (rabbitsToWin) => { dispatch(setRabbitsToWin(rabbitsToWin)); },
+});
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Game);

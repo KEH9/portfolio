@@ -4,7 +4,6 @@ import React from 'react';
 import {
   BrowserRouter, Route, Switch, Redirect,
 } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import './App.css';
 
@@ -27,13 +26,4 @@ function App() {
   );
 }
 
-const mapStateToProps = (state) => {
-  console.log('!');
-  return {
-    rabbitsToWin: state.rabbitsToWin,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-)(App);
+export default App;
