@@ -1,19 +1,46 @@
+/* eslint-disable no-shadow */
+/* eslint-disable import/no-duplicates */
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as levelActions from '../../actions/actionCeator';
+import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 
 
 /*
 * Choose difficulty of the game and start game button
 */
 
-export default function StartMenu(props) {
-  return (
+function StartMenu(props) {
+  function decreaseDifficultyLevelfunction(props) {
+    props.actions.decreaseDifficultyLevel();
+    if (props.difficultyLevel === veteran) {
+      props.actions.setRabbitsToWin(65);
+    } else if (props.difficultyLevel === ace) {
+      props.actions.setRabbitsToWin(100);
+    }
+  }
+  function increaseDifficultyLevelfunction(props) {
+    props.actions.increaseDifficultyLevel();
+    if (props.difficultyLevel === newbie) {
+      props.actions.setRabbitsToWin(100);
+    } else if (props.difficultyLevel === veteran) {
+      props.actions.setRabbitsToWin(120);
+    }
+  }
 
+  const decreaseLevel = () => decreaseDifficultyLevelfunction(props);
+  const increaseLevel = () => increaseDifficultyLevelfunction(props);
+
+
+  return (
     <div className="start-menu-container">
 
       <button
         type="button"
         id="leveldown"
-        onClick={props.decreaseDifficultyLevel}
+        onClick={decreaseLevel}
       >
       &#60;
       </button>
@@ -23,7 +50,7 @@ export default function StartMenu(props) {
       <button
         type="button"
         id="levelup"
-        onClick={props.increaseDifficultyLevel}
+        onClick={increaseLevel}
       >
         &#62;
       </button>
@@ -40,3 +67,17 @@ export default function StartMenu(props) {
 
   );
 }
+
+const mapStateToProps = state => ({
+  difficultyLevel: state.difficultyLevel,
+  rabbitsToWin: state.rabbitsToWin,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(levelActions, dispatch),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(StartMenu);

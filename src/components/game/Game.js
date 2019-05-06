@@ -1,6 +1,12 @@
+// todo
+// сделать два одинаковых метода i/d difficultyLevel здесь и в старт меню и юзать там даблом
+// два редуцера на difficultyLevel и раббитс ту вин, а может и вынести эту функцию как ни будь.
+// внести правило в линт про дупликейтс
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 import { setRabbitsToWin } from '../../actions/actionCeator';
 
 import './Game.css';
@@ -34,13 +40,11 @@ class Game extends Component {
       bang: '',
       message: '',
       speedRPS: 0,
-      rabbitsToWin: 100,
     };
   }
 
 
   componentDidMount() {
-    this.difficultyLevel = 'veteran';
     this.welcome();
     this.soundInit();
     this.gameIn = false;
@@ -113,26 +117,22 @@ class Game extends Component {
     ];
 
 
-    if (this.difficultyLevel === 'newbie') {
+    if (this.props.difficultyLevel === newbie) {
       this.currentSpeed = 200;
       this.speedLimit = 150;
       this.speedStep = 2;
       this.winCondition = 65;
-    } else if (this.difficultyLevel === 'veteran') {
+    } else if (this.props.difficultyLevel === veteran) {
       this.currentSpeed = 170;
       this.speedLimit = 130;
       this.speedStep = 1;
       this.winCondition = 100;
-    } else if (this.difficultyLevel === 'ace') {
+    } else if (this.props.difficultyLevel === ace) {
       this.currentSpeed = 150;
       this.speedLimit = 120;
       this.speedStep = 1;
       this.winCondition = 120;
     }
-
-    this.setState({
-      rabbitsToWin: this.winCondition,
-    });
 
     this.props.setRabbitsToWin(this.winCondition);
 
@@ -202,57 +202,12 @@ class Game extends Component {
 
 
   increaseDifficultyLevel() {
-    if (this.difficultyLevel === 'veteran') {
-      this.difficultyLevel = 'ace';
-      this.setState({
-        rabbitsToWin: 120,
-      });
-      this.props.setRabbitsToWin(120);
-    } else if (this.difficultyLevel === 'newbie') {
-      this.difficultyLevel = 'veteran';
-      this.setState({
-        rabbitsToWin: 100,
-      });
-      this.props.setRabbitsToWin(100);
-    }
-    this.chooseLevel = (
-      <StartMenu
-        difficultyLevel={this.difficultyLevel}
-        decreaseDifficultyLevel={this.decreaseDifficultyLevel.bind(this)}
-        increaseDifficultyLevel={this.increaseDifficultyLevel.bind(this)}
-        restartGame={this.restartGame.bind(this)}
-      />
-    );
-
-    this.forceUpdate();
+    this.lala = 1;
   }
 
 
   decreaseDifficultyLevel() {
-    if (this.difficultyLevel === 'veteran') {
-      this.difficultyLevel = 'newbie';
-      this.setState({
-        rabbitsToWin: 65,
-      });
-      this.props.setRabbitsToWin(65);
-    } else if (this.difficultyLevel === 'ace') {
-      this.difficultyLevel = 'veteran';
-      this.setState({
-        rabbitsToWin: 100,
-      });
-      this.props.setRabbitsToWin(100);
-    }
-
-
-    this.chooseLevel = (
-      <StartMenu
-        difficultyLevel={this.difficultyLevel}
-        decreaseDifficultyLevel={this.decreaseDifficultyLevel.bind(this)}
-        increaseDifficultyLevel={this.increaseDifficultyLevel.bind(this)}
-        restartGame={this.restartGame.bind(this)}
-      />
-    );
-    this.forceUpdate();
+    this.lala = 1;
   }
 
 
@@ -340,9 +295,6 @@ class Game extends Component {
 
   rabbitEaten() {
     this.rabbitsEaten = this.rabbitsEaten + 1;
-    this.setState({
-      rabbitsToWin: (this.winCondition - this.rabbitsEaten),
-    });
     this.props.setRabbitsToWin(this.winCondition - this.rabbitsEaten);
 
     if (this.rabbitsEaten === this.winCondition) {
@@ -400,11 +352,10 @@ class Game extends Component {
       message: <div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>,
     });
 
+    // console.log(this.difficultyLevel);
+
     this.chooseLevel = (
       <StartMenu
-        difficultyLevel={this.difficultyLevel}
-        decreaseDifficultyLevel={this.decreaseDifficultyLevel.bind(this)}
-        increaseDifficultyLevel={this.increaseDifficultyLevel.bind(this)}
         restartGame={this.restartGame.bind(this)}
       />
     );
@@ -437,9 +388,6 @@ class Game extends Component {
 
     this.chooseLevel = (
       <StartMenu
-        difficultyLevel={this.difficultyLevel}
-        decreaseDifficultyLevel={this.decreaseDifficultyLevel.bind(this)}
-        increaseDifficultyLevel={this.increaseDifficultyLevel.bind(this)}
         restartGame={this.restartGame.bind(this)}
       />
     );
@@ -458,9 +406,6 @@ class Game extends Component {
 
     this.chooseLevel = (
       <StartMenu
-        difficultyLevel={this.difficultyLevel}
-        decreaseDifficultyLevel={this.decreaseDifficultyLevel.bind(this)}
-        increaseDifficultyLevel={this.increaseDifficultyLevel.bind(this)}
         restartGame={this.restartGame.bind(this)}
       />
     );
@@ -572,8 +517,8 @@ class Game extends Component {
 
   addNewBodyPieceToLogicArray() {
     const newBodyPiece = {};
-    newBodyPiece.x = this.snakeLogicArray[0].x; // X coord
-    newBodyPiece.y = this.snakeLogicArray[0].y; // Y coord
+    newBodyPiece.x = this.snakeLogicArray[0].x;
+    newBodyPiece.y = this.snakeLogicArray[0].y;
 
     if (this.lastHeadConnection === this.nextMoveConnection) {
       newBodyPiece.piece = 'body';
@@ -776,9 +721,8 @@ class Game extends Component {
 
           <div className="rabbitsToWin">
             You have to eat
-            <span className="info"> {this.state.rabbitsToWin} </span>
+            <span className="info"> {this.props.rabbitsToWin} </span>
             more rabbits to win
-            <span className="info"> ! {this.props.rabbitsToWin} ! </span>
           </div>
 
           <div className="technologyStack">
@@ -814,8 +758,10 @@ class Game extends Component {
   }
 }
 
+
 const mapStateToProps = state => ({
   rabbitsToWin: state.rabbitsToWin,
+  difficultyLevel: state.difficultyLevel,
 });
 
 const mapDispatchToProps = dispatch => ({
