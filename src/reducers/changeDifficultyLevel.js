@@ -5,10 +5,6 @@ import {
 
 import { newbie, veteran, ace } from '../constants/difficultyLevels';
 
-// const initialState = {
-//   rabbitsToWin: 100,
-//   difficultyLevel: veteran,
-// };
 
 export default function difficultyLevel(state = veteran, action) {
   if (action.type === INCREASE_DIFFICULTY_LEVEL) {

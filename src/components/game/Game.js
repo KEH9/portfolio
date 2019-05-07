@@ -5,9 +5,10 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
-import { setRabbitsToWin } from '../../actions/actionCeator';
+import { setRabbitsToWin, increaseDifficultyLevel, decreaseDifficultyLevel } from '../../actions/actionCeator';
 
 import './Game.css';
 
@@ -134,7 +135,7 @@ class Game extends Component {
       this.winCondition = 120;
     }
 
-    this.props.setRabbitsToWin(this.winCondition);
+    this.props.levelActions.setRabbitsToWin(this.winCondition);
 
     this.ticCounter = 0;
     this.currentMoveConnecton = 'left'; // direction of the snake head (direction where head attach to other piece)
@@ -202,12 +203,22 @@ class Game extends Component {
 
 
   increaseDifficultyLevel() {
-    this.lala = 1;
+    if (this.props.difficultyLevel === newbie) {
+      this.props.levelActions.setRabbitsToWin(100);
+    } else if (this.props.difficultyLevel === veteran) {
+      this.props.levelActions.setRabbitsToWin(120);
+    }
+    this.props.levelActions.increaseDifficultyLevel();
   }
 
 
   decreaseDifficultyLevel() {
-    this.lala = 1;
+    if (this.props.difficultyLevel === veteran) {
+      this.props.levelActions.setRabbitsToWin(65);
+    } else if (this.props.difficultyLevel === ace) {
+      this.props.levelActions.setRabbitsToWin(100);
+    }
+    this.props.levelActions.decreaseDifficultyLevel();
   }
 
 
@@ -295,7 +306,7 @@ class Game extends Component {
 
   rabbitEaten() {
     this.rabbitsEaten = this.rabbitsEaten + 1;
-    this.props.setRabbitsToWin(this.winCondition - this.rabbitsEaten);
+    this.props.levelActions.setRabbitsToWin(this.winCondition - this.rabbitsEaten);
 
     if (this.rabbitsEaten === this.winCondition) {
       this.congratulations();
@@ -764,8 +775,10 @@ const mapStateToProps = state => ({
   difficultyLevel: state.difficultyLevel,
 });
 
+const levelActions = { setRabbitsToWin, increaseDifficultyLevel, decreaseDifficultyLevel };
+
 const mapDispatchToProps = dispatch => ({
-  setRabbitsToWin: (rabbitsToWin) => { dispatch(setRabbitsToWin(rabbitsToWin)); },
+  levelActions: bindActionCreators(levelActions, dispatch),
 });
 
 export default connect(

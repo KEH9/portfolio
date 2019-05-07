@@ -1,10 +1,8 @@
-/* eslint-disable no-shadow */
-/* eslint-disable import/no-duplicates */
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as levelActions from '../../actions/actionCeator';
+import { setRabbitsToWin, increaseDifficultyLevel, decreaseDifficultyLevel } from '../../actions/actionCeator';
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 
 
@@ -13,21 +11,21 @@ import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 */
 
 function StartMenu(props) {
-  function decreaseDifficultyLevelfunction(props) {
-    props.actions.decreaseDifficultyLevel();
+  function decreaseDifficultyLevelfunction() {
     if (props.difficultyLevel === veteran) {
       props.actions.setRabbitsToWin(65);
     } else if (props.difficultyLevel === ace) {
       props.actions.setRabbitsToWin(100);
     }
+    props.actions.decreaseDifficultyLevel();
   }
-  function increaseDifficultyLevelfunction(props) {
-    props.actions.increaseDifficultyLevel();
+  function increaseDifficultyLevelfunction() {
     if (props.difficultyLevel === newbie) {
       props.actions.setRabbitsToWin(100);
     } else if (props.difficultyLevel === veteran) {
       props.actions.setRabbitsToWin(120);
     }
+    props.actions.increaseDifficultyLevel();
   }
 
   const decreaseLevel = () => decreaseDifficultyLevelfunction(props);
@@ -68,10 +66,13 @@ function StartMenu(props) {
   );
 }
 
+
 const mapStateToProps = state => ({
   difficultyLevel: state.difficultyLevel,
   rabbitsToWin: state.rabbitsToWin,
 });
+
+const levelActions = { setRabbitsToWin, increaseDifficultyLevel, decreaseDifficultyLevel };
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(levelActions, dispatch),
