@@ -8,7 +8,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
-import { setRabbitsToWin, increaseDifficultyLevel, decreaseDifficultyLevel } from '../../actions/actionCeator';
+import {
+  setRabbitsToWin,
+  increaseDifficultyLevel,
+  decreaseDifficultyLevel,
+  setCurrentSpeed,
+  setSpeedLimit,
+  setSpeedStep,
+  setWinCondition,
+} from '../../actions/actionCeator';
 
 import './Game.css';
 
@@ -118,24 +126,24 @@ class Game extends Component {
     ];
 
 
-    if (this.props.difficultyLevel === newbie) {
-      this.currentSpeed = 200;
-      this.speedLimit = 150;
-      this.speedStep = 2;
-      this.winCondition = 65;
-    } else if (this.props.difficultyLevel === veteran) {
-      this.currentSpeed = 170;
-      this.speedLimit = 130;
-      this.speedStep = 1;
-      this.winCondition = 100;
-    } else if (this.props.difficultyLevel === ace) {
-      this.currentSpeed = 150;
-      this.speedLimit = 120;
-      this.speedStep = 1;
-      this.winCondition = 120;
-    }
+    // if (this.props.difficultyLevel === newbie) {
+    //   this.currentSpeed = 200;
+    //   this.speedLimit = 150;
+    //   this.speedStep = 2;
+    //   this.winCondition = 65;
+    // } else if (this.props.difficultyLevel === veteran) {
+    //   this.currentSpeed = 170;
+    //   this.speedLimit = 130;
+    //   this.speedStep = 1;
+    //   this.winCondition = 100;
+    // } else if (this.props.difficultyLevel === ace) {
+    //   this.currentSpeed = 150;
+    //   this.speedLimit = 120;
+    //   this.speedStep = 1;
+    //   this.winCondition = 120;
+    // }
 
-    this.props.levelActions.setRabbitsToWin(this.winCondition);
+    this.props.levelActions.setRabbitsToWin(this.props.winCondition);
 
     this.ticCounter = 0;
     this.currentMoveConnecton = 'left'; // direction of the snake head (direction where head attach to other piece)
@@ -166,9 +174,9 @@ class Game extends Component {
 * Generates the rhythm of the game
 */
   ticGenerator() {
-    this.ticId = setInterval(() => { this.ticHandler(); }, this.currentSpeed);
+    this.ticId = setInterval(() => { this.ticHandler(); }, this.props.currentSpeed);
     this.setState({
-      speedRPS: ((Math.round(1000 / this.currentSpeed * 100)) / 100).toFixed(2),
+      speedRPS: ((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2),
     });
   }
 
@@ -205,8 +213,16 @@ class Game extends Component {
   increaseDifficultyLevel() {
     if (this.props.difficultyLevel === newbie) {
       this.props.levelActions.setRabbitsToWin(100);
+      this.props.levelActions.setCurrentSpeed(170);
+      this.props.levelActions.setSpeedLimit(130);
+      this.props.levelActions.setSpeedStep(1);
+      this.props.levelActions.setWinCondition(100);
     } else if (this.props.difficultyLevel === veteran) {
       this.props.levelActions.setRabbitsToWin(120);
+      this.props.levelActions.setCurrentSpeed(150);
+      this.props.levelActions.setSpeedLimit(120);
+      this.props.levelActions.setSpeedStep(1);
+      this.props.levelActions.setWinCondition(120);
     }
     this.props.levelActions.increaseDifficultyLevel();
   }
@@ -215,8 +231,16 @@ class Game extends Component {
   decreaseDifficultyLevel() {
     if (this.props.difficultyLevel === veteran) {
       this.props.levelActions.setRabbitsToWin(65);
+      this.props.levelActions.setCurrentSpeed(200);
+      this.props.levelActions.setSpeedLimit(150);
+      this.props.levelActions.setSpeedStep(2);
+      this.props.levelActions.setWinCondition(65);
     } else if (this.props.difficultyLevel === ace) {
       this.props.levelActions.setRabbitsToWin(100);
+      this.props.levelActions.setCurrentSpeed(170);
+      this.props.levelActions.setSpeedLimit(130);
+      this.props.levelActions.setSpeedStep(1);
+      this.props.levelActions.setWinCondition(100);
     }
     this.props.levelActions.decreaseDifficultyLevel();
   }
@@ -293,22 +317,23 @@ class Game extends Component {
 
 
   increaseSpeed() {
-    if (this.currentSpeed <= this.speedLimit) return;
-    this.currentSpeed = this.currentSpeed - this.speedStep;
+    if (this.props.currentSpeed <= this.props.speedLimit) return;
+    const newCurrentSpeed = (this.props.currentSpeed - this.props.speedStep);
+    this.props.levelActions.setCurrentSpeed(newCurrentSpeed);
     clearInterval(this.ticId);
     this.ticGenerator();
 
     this.setState({
-      speedRPS: ((Math.round(1000 / this.currentSpeed * 100)) / 100).toFixed(2),
+      speedRPS: ((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2),
     });
   }
 
 
   rabbitEaten() {
     this.rabbitsEaten = this.rabbitsEaten + 1;
-    this.props.levelActions.setRabbitsToWin(this.winCondition - this.rabbitsEaten);
+    this.props.levelActions.setRabbitsToWin(this.props.winCondition - this.rabbitsEaten);
 
-    if (this.rabbitsEaten === this.winCondition) {
+    if (this.rabbitsEaten === this.props.winCondition) {
       this.congratulations();
       return;
     }
@@ -771,11 +796,23 @@ class Game extends Component {
 
 
 const mapStateToProps = state => ({
-  rabbitsToWin: state.rabbitsToWin,
   difficultyLevel: state.difficultyLevel,
+  rabbitsToWin: state.rabbitsToWin,
+  currentSpeed: state.currentSpeed,
+  speedLimit: state.speedLimit,
+  speedStep: state.speedStep,
+  winCondition: state.winCondition,
 });
 
-const levelActions = { setRabbitsToWin, increaseDifficultyLevel, decreaseDifficultyLevel };
+const levelActions = {
+  increaseDifficultyLevel,
+  decreaseDifficultyLevel,
+  setRabbitsToWin,
+  setCurrentSpeed,
+  setSpeedLimit,
+  setSpeedStep,
+  setWinCondition,
+};
 
 const mapDispatchToProps = dispatch => ({
   levelActions: bindActionCreators(levelActions, dispatch),

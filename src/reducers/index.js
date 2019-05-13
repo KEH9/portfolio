@@ -1,10 +1,20 @@
 import { combineReducers } from 'redux';
-import rabbitsToWin from './setRabbitsToWin';
-import difficultyLevel from './changeDifficultyLevel';
+import {
+  difficultyLevel,
+  setRabbitsToWin,
+  setCurrentSpeed,
+  setSpeedLimit,
+  setSpeedStep,
+  setWinCondition,
+} from './changeDifficultyLevel';
 
 const rootReducer = combineReducers({
-  rabbitsToWin,
   difficultyLevel,
+  rabbitsToWin: setRabbitsToWin,
+  currentSpeed: setCurrentSpeed,
+  speedLimit: setSpeedLimit,
+  speedStep: setSpeedStep,
+  winCondition: setWinCondition,
 });
 
 export default rootReducer;
