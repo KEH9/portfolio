@@ -1,7 +1,6 @@
 // todo
-// сделать два одинаковых метода i/d difficultyLevel здесь и в старт меню и юзать там даблом
-// два редуцера на difficultyLevel и раббитс ту вин, а может и вынести эту функцию как ни будь.
-// внести правило в линт про дупликейтс
+// перевести весь стейт Game в ридакс, перед этим СОХРАНИСЬ!!!
+// навести красоту
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -54,6 +53,7 @@ class Game extends Component {
 
 
   componentDidMount() {
+    this.setDefaultProps();
     this.welcome();
     this.soundInit();
     this.gameIn = false;
@@ -67,6 +67,19 @@ class Game extends Component {
     window.removeEventListener('keydown', this.keyDownFunction, false);
     clearInterval(this.ticId);
     clearTimeout(this.timerId);
+  }
+
+  setDefaultProps() {
+    if (this.props.difficultyLevel === newbie) {
+      this.props.levelActions.setRabbitsToWin(65);
+      this.props.levelActions.setCurrentSpeed(200);
+    } else if (this.props.difficultyLevel === veteran) {
+      this.props.levelActions.setRabbitsToWin(100);
+      this.props.levelActions.setCurrentSpeed(170);
+    } else if (this.props.difficultyLevel === ace) {
+      this.props.levelActions.setRabbitsToWin(120);
+      this.props.levelActions.setCurrentSpeed(150);
+    }
   }
 
 
@@ -125,23 +138,6 @@ class Game extends Component {
       },
     ];
 
-
-    // if (this.props.difficultyLevel === newbie) {
-    //   this.currentSpeed = 200;
-    //   this.speedLimit = 150;
-    //   this.speedStep = 2;
-    //   this.winCondition = 65;
-    // } else if (this.props.difficultyLevel === veteran) {
-    //   this.currentSpeed = 170;
-    //   this.speedLimit = 130;
-    //   this.speedStep = 1;
-    //   this.winCondition = 100;
-    // } else if (this.props.difficultyLevel === ace) {
-    //   this.currentSpeed = 150;
-    //   this.speedLimit = 120;
-    //   this.speedStep = 1;
-    //   this.winCondition = 120;
-    // }
 
     this.props.levelActions.setRabbitsToWin(this.props.winCondition);
 
@@ -387,8 +383,6 @@ class Game extends Component {
     this.setState({
       message: <div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>,
     });
-
-    // console.log(this.difficultyLevel);
 
     this.chooseLevel = (
       <StartMenu
