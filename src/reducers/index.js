@@ -8,6 +8,10 @@ import {
   setWinCondition,
 } from './changeDifficultyLevel';
 
+import {
+  setRenderArray, setRabbit, setBang, setMessage, setSpeedRPS,
+} from './renderState';
+
 const rootReducer = combineReducers({
   difficultyLevel,
   rabbitsToWin: setRabbitsToWin,
@@ -15,6 +19,11 @@ const rootReducer = combineReducers({
   speedLimit: setSpeedLimit,
   speedStep: setSpeedStep,
   winCondition: setWinCondition,
+  renderArray: setRenderArray,
+  rabbit: setRabbit,
+  bang: setBang,
+  message: setMessage,
+  speedRPS: setSpeedRPS,
 });
 
 export default rootReducer;

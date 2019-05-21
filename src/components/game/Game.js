@@ -1,6 +1,10 @@
 // todo
 // перевести весь стейт Game в ридакс, перед этим СОХРАНИСЬ!!!
+// проверить - будет ли работать без bindActionCreator
+// добавить прелоады звука и пикчей
+// сделать разные тайтлы
 // навести красоту
+// коменты добавить!!!
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -15,6 +19,11 @@ import {
   setSpeedLimit,
   setSpeedStep,
   setWinCondition,
+  setRenderArray,
+  setRabbit,
+  setBang,
+  setMessage,
+  setSpeedRPS,
 } from '../../actions/actionCeator';
 
 import './Game.css';
@@ -26,8 +35,8 @@ import body from './img/snake-body-up-down.png';
 import bodyCurve from './img/snake-turn-left-bottom.png';
 import tail from './img/snake-tail-up.png';
 import tailUSD from './img/snake-tail-down.png';
-import rabbit from './img/rabbit.png';
-import bang from './img/bang.gif';
+import rabbitIMG from './img/rabbit.png';
+import bangIMG from './img/bang.gif';
 import nom from './sound/nom.mp3';
 import aaarrrrr from './sound/aaarrrrr.mp3';
 import yuhuu from './sound/yuhuu.mp3';
@@ -35,23 +44,34 @@ import soundOn from './img/sound-on.jpg';
 import soundOff from './img/sound-off.jpg';
 
 
+// const head = '';
+// const body = '';
+// const bodyCurve = '';
+// const tail = '';
+// const tailUSD = '';
+
+
+// const head = new Image();
+// head.src = './img/snake-head-bottom.png';
+
+// const body = new Image();
+// body.src = './img/snake-body-up-down.png';
+
+// const bodyCurve = new Image();
+// bodyCurve.src = './img/snake-turn-left-bottom.png';
+
+// const tail = new Image();
+// tail.src = './img/snake-tail-up.png';
+
+// const tailUSD = new Image();
+// tailUSD.src = './img/snake-tail-down.png';
+
+
 /*
 * Main class includes game board and everything on it
 */
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      renderArray: [],
-      rabbit: '',
-      bang: '',
-      message: '',
-      speedRPS: 0,
-    };
-  }
-
-
   componentDidMount() {
     this.setDefaultProps();
     this.welcome();
@@ -69,6 +89,7 @@ class Game extends Component {
     clearTimeout(this.timerId);
   }
 
+  // needs for component mount after dismounting only to renew state!
   setDefaultProps() {
     if (this.props.difficultyLevel === newbie) {
       this.props.levelActions.setRabbitsToWin(65);
@@ -80,16 +101,19 @@ class Game extends Component {
       this.props.levelActions.setRabbitsToWin(120);
       this.props.levelActions.setCurrentSpeed(150);
     }
+    this.props.setRenderArray([]);
+    this.props.setRabbit('');
+    this.props.setBang('');
+    this.props.setMessage('');
+    this.props.setSpeedRPS(0);
   }
 
 
   restartGame() {
-    this.setState({
-      renderArray: [],
-      rabbit: '',
-      bang: '',
-      message: '',
-    });
+    this.props.setRenderArray([]);
+    this.props.setRabbit('');
+    this.props.setBang('');
+    this.props.setMessage('');
 
     /*
     * snakeLogicArray contains information about pieces of snake, each piece information includes:
@@ -145,7 +169,6 @@ class Game extends Component {
     this.currentMoveConnecton = 'left'; // direction of the snake head (direction where head attach to other piece)
     this.nextMoveConnection = 'left'; // same in the next move
     this.lastHeadConnection = 'left'; // same in the tic before
-    this.snake = React.createRef();
     this.rabbitX = '';
     this.rabbitY = '';
     this.rabbitsEaten = 0;
@@ -166,14 +189,10 @@ class Game extends Component {
   }
 
 
-  /*
-* Generates the rhythm of the game
-*/
+  // Generates the rhythm of the game
   ticGenerator() {
     this.ticId = setInterval(() => { this.ticHandler(); }, this.props.currentSpeed);
-    this.setState({
-      speedRPS: ((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2),
-    });
+    this.props.setSpeedRPS(((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2));
   }
 
 
@@ -181,16 +200,10 @@ class Game extends Component {
     clearInterval(this.ticId);
   }
 
-
+  // events on every tic of the game
   ticHandler() {
     this.ticCounter = this.ticCounter + 1;
     this.currentMoveConnecton = this.nextMoveConnection;
-
-    /*     if (this.snakeLogicArray[0] === undefined) { // cleanup
-      this.stopTic();
-      return;
-    }
-    */
     this.addNewBodyPieceToLogicArray();
     this.removeLastBodyPieceFromLogicArray();
     this.addTailToLogicArray();
@@ -205,7 +218,7 @@ class Game extends Component {
     this.createRenderSnakeArray();
   }
 
-
+  // changing game parameters which are dependent on game difficulty level
   increaseDifficultyLevel() {
     if (this.props.difficultyLevel === newbie) {
       this.props.levelActions.setRabbitsToWin(100);
@@ -223,7 +236,7 @@ class Game extends Component {
     this.props.levelActions.increaseDifficultyLevel();
   }
 
-
+  // changing game parameters which are dependent on game difficulty level
   decreaseDifficultyLevel() {
     if (this.props.difficultyLevel === veteran) {
       this.props.levelActions.setRabbitsToWin(65);
@@ -245,21 +258,21 @@ class Game extends Component {
   keyPressHandler(e) {
     const key = (e.keyCode ? e.keyCode : e.which);
 
-    if ((key === 13 || key === 32) && this.gameIn) {
+    if ((key === 13 || key === 32) && this.gameIn) { // enter and space when game already started
       e.preventDefault();
       this.pauseGame();
-    } else if ((key === 13 || key === 32) && !this.gameIn) {
+    } else if ((key === 13 || key === 32) && !this.gameIn) { // enter and space in start menu
       this.restartGame();
     }
 
-    if ((key === 37) && !this.gameIn) {
+    if ((key === 37) && !this.gameIn) { // cursor left in menu
       this.decreaseDifficultyLevel();
     }
-    if ((key === 39) && !this.gameIn) {
+    if ((key === 39) && !this.gameIn) { // cursor right in menu
       this.increaseDifficultyLevel();
     }
 
-    if ((
+    if (( // bufferization of the key pressed if one keypress was already done this tic
       key === 37
       || key === 38
       || key === 39
@@ -284,7 +297,7 @@ class Game extends Component {
       this.keyBuffered = key;
     }
 
-    if (key === 77) {
+    if (key === 77) { // mute / unmute sound
       this.soundToggle();
     }
   }
@@ -311,7 +324,7 @@ class Game extends Component {
     }
   }
 
-
+  // increasing speed of the snake (tic rithm)
   increaseSpeed() {
     if (this.props.currentSpeed <= this.props.speedLimit) return;
     const newCurrentSpeed = (this.props.currentSpeed - this.props.speedStep);
@@ -319,9 +332,7 @@ class Game extends Component {
     clearInterval(this.ticId);
     this.ticGenerator();
 
-    this.setState({
-      speedRPS: ((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2),
-    });
+    this.props.setSpeedRPS(((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2));
   }
 
 
@@ -347,14 +358,14 @@ class Game extends Component {
 
     const style = { left: `${x - 100}px`, top: `${y - 100}px` };
 
-    this.setState({
-      bang: <img
-        src={bang}
+    this.props.setBang(
+      <img
+        src={bangIMG}
         alt=""
         className="bang"
         style={style}
       />,
-    });
+    );
 
     this.timeoutId = setTimeout(() => { this.gameOver(); }, 2000);
   }
@@ -366,23 +377,21 @@ class Game extends Component {
 
     const style = { left: `${x - 88}px`, top: `${y - 88}px` };
 
-    this.setState({
-      bang: <img
-        src={bang}
+    this.props.setBang(
+      <img
+        src={bangIMG}
         alt=""
         className="bang"
         style={style}
       />,
-    });
+    );
 
     this.timeoutId = setTimeout(() => { this.gameOver(); }, 2000);
   }
 
 
   welcome() {
-    this.setState({
-      message: <div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>,
-    });
+    this.props.setMessage(<div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>);
 
     this.chooseLevel = (
       <StartMenu
@@ -396,14 +405,10 @@ class Game extends Component {
     if (!this.gamePaused) {
       this.gamePaused = !this.gamePaused;
       this.stopTic();
-      this.setState({
-        message: <div className="message">GAME PAUSED</div>,
-      });
+      this.props.setMessage(<div className="message">GAME PAUSED</div>);
     } else {
       this.gamePaused = !this.gamePaused;
-      this.setState({
-        message: '',
-      });
+      this.props.setMessage('');
       this.ticGenerator();
     }
   }
@@ -412,9 +417,7 @@ class Game extends Component {
   gameOver() {
     this.gameIn = false;
     this.removeGame();
-    this.setState({
-      message: <div className="message">GAME OVER</div>,
-    });
+    this.props.setMessage(<div className="message">GAME OVER</div>);
 
     this.chooseLevel = (
       <StartMenu
@@ -430,9 +433,7 @@ class Game extends Component {
     this.removeGame();
     if (this.soundIsOn) new Audio(yuhuu).play();
 
-    this.setState({
-      message: <div className="message long">CONGRATULATIONS! you win!</div>,
-    });
+    this.props.setMessage(<div className="message long">CONGRATULATIONS! you win!</div>);
 
     this.chooseLevel = (
       <StartMenu
@@ -445,11 +446,10 @@ class Game extends Component {
 
   removeGame() {
     this.stopTic();
-    this.setState({
-      renderArray: [],
-      rabbit: '',
-      bang: '',
-    });
+
+    this.props.setRenderArray([]);
+    this.props.setRabbit('');
+    this.props.setBang('');
 
     this.snakeLogicArray = [];
 
@@ -629,15 +629,14 @@ class Game extends Component {
 
     const style = { left: `${x}px`, top: `${y}px` };
 
-    this.setState({
-      rabbit: <img
-        src={rabbit}
+    this.props.setRabbit(
+      <img
+        src={rabbitIMG}
         alt=""
         className="rabbit"
         style={style}
-
       />,
-    });
+    );
   }
 
 
@@ -645,24 +644,21 @@ class Game extends Component {
 * Makes render array from logic array
 */
   createRenderSnakeArray() {
-    const renderArray = [];
+    const newRenderArray = [];
 
     for (let i = 0; i < this.snakeLogicArray.length; i++) {
       const style = { left: (`${this.snakeLogicArray[i].x}px`), top: (`${this.snakeLogicArray[i].y}px`) };
-      renderArray.push(
+      newRenderArray.push(
         <img
           key={`${this.snakeLogicArray[i].x} ${this.snakeLogicArray[i].y}`}
           src={this.snakeLogicArray[i].pic}
           alt=""
           className={`${this.snakeLogicArray[i].piece} ${this.snakeLogicArray[i].direction}`}
-          ref={this.snake}
           style={style}
         />,
       );
     }
-    this.setState({
-      renderArray,
-    });
+    this.props.setRenderArray(newRenderArray);
   }
 
 
@@ -718,10 +714,10 @@ class Game extends Component {
           className="leftColumn"
         >
           <div className="board">
-            {this.state.renderArray}
-            {this.state.rabbit}
-            {this.state.bang}
-            {this.state.message}
+            {this.props.renderArray}
+            {this.props.rabbit}
+            {this.props.bang}
+            {this.props.message}
             {this.chooseLevel}
           </div>
 
@@ -745,7 +741,7 @@ class Game extends Component {
 
           <div className="speedRPS">
             Your current speed is
-            <span className="info"> {this.state.speedRPS} </span>
+            <span className="info"> {this.props.speedRPS} </span>
               rabbits per second
           </div>
 
@@ -796,6 +792,11 @@ const mapStateToProps = state => ({
   speedLimit: state.speedLimit,
   speedStep: state.speedStep,
   winCondition: state.winCondition,
+  renderArray: state.renderArray,
+  rabbit: state.rabbit,
+  bang: state.bang,
+  message: state.message,
+  speedRPS: state.speedRPS,
 });
 
 const levelActions = {
@@ -810,6 +811,11 @@ const levelActions = {
 
 const mapDispatchToProps = dispatch => ({
   levelActions: bindActionCreators(levelActions, dispatch),
+  setRenderArray: (renderArray) => { dispatch(setRenderArray(renderArray)); },
+  setRabbit: (rabbit) => { dispatch(setRabbit(rabbit)); },
+  setBang: (bang) => { dispatch(setBang(bang)); },
+  setMessage: (message) => { dispatch(setMessage(message)); },
+  setSpeedRPS: (speedRPS) => { dispatch(setSpeedRPS(speedRPS)); },
 });
 
 export default connect(

@@ -7,3 +7,9 @@ export const SET_CURRENT_SPEED = 'SET_CURRENT_SPEED';
 export const SET_SPEED_LIMIT = 'SET_SPEED_LIMIT';
 export const SET_SPEED_STEP = 'SET_SPEED_STEP';
 export const SET_WIN_CONDITION = 'SET_WIN_CONDITION';
+
+export const SET_RENDER_ARRAY = 'SET_RENDER_ARRAY';
+export const SET_RABBIT = 'SET_RABBIT';
+export const SET_BANG = 'SET_BANG';
+export const SET_MESSAGE = 'SET_MESSAGE';
+export const SET_SPEED_RPS = 'SET_SPEED_RPS';
