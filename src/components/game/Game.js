@@ -1,14 +1,14 @@
 // todo
-// перевести весь стейт Game в ридакс, перед этим СОХРАНИСЬ!!!
-// проверить - будет ли работать без bindActionCreator
-// добавить прелоады звука и пикчей
-// сделать разные тайтлы
+// + проверить - будет ли работать без bindActionCreator
+// + прокинуть изменение левелов сложности в StartMenu
+// + сделать разные тайтлы
+// -+ добавить прелоады звука и пикчей
+// + 8 бит фейерверк и протестить победу
 // навести красоту
 // коменты добавить!!!
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 import {
@@ -24,12 +24,15 @@ import {
   setBang,
   setMessage,
   setSpeedRPS,
+  setChooseLevel,
+  setFireworks,
 } from '../../actions/actionCeator';
 
 import './Game.css';
 
 import StartMenu from './StartMenu';
 import randomInt from './randomInt';
+
 import head from './img/snake-head-bottom.png';
 import body from './img/snake-body-up-down.png';
 import bodyCurve from './img/snake-turn-left-bottom.png';
@@ -37,34 +40,13 @@ import tail from './img/snake-tail-up.png';
 import tailUSD from './img/snake-tail-down.png';
 import rabbitIMG from './img/rabbit.png';
 import bangIMG from './img/bang.gif';
-import nom from './sound/nom.mp3';
-import aaarrrrr from './sound/aaarrrrr.mp3';
-import yuhuu from './sound/yuhuu.mp3';
+import fireworksIMG from './img/fireworks.gif';
 import soundOn from './img/sound-on.jpg';
 import soundOff from './img/sound-off.jpg';
 
-
-// const head = '';
-// const body = '';
-// const bodyCurve = '';
-// const tail = '';
-// const tailUSD = '';
-
-
-// const head = new Image();
-// head.src = './img/snake-head-bottom.png';
-
-// const body = new Image();
-// body.src = './img/snake-body-up-down.png';
-
-// const bodyCurve = new Image();
-// bodyCurve.src = './img/snake-turn-left-bottom.png';
-
-// const tail = new Image();
-// tail.src = './img/snake-tail-up.png';
-
-// const tailUSD = new Image();
-// tailUSD.src = './img/snake-tail-down.png';
+import nom from './sound/nom.mp3';
+import aaarrrrr from './sound/aaarrrrr.mp3';
+import yuhuu from './sound/yuhuu.mp3';
 
 
 /*
@@ -73,11 +55,37 @@ import soundOff from './img/sound-off.jpg';
 
 class Game extends Component {
   componentDidMount() {
+    // preloading pictures
+    const picturesToPreload = [
+      './img/snake-head-bottom.png',
+      './img/snake-body-up-down.png',
+      './img/snake-turn-left-bottom.png',
+      './img/snake-tail-up.png',
+      './img/snake-tail-down.png',
+      './img/rabbit.png',
+      './img/bang.gif',
+      './img/fireworks.gif',
+    ];
+    picturesToPreload.forEach((picture) => {
+      const img = new Image();
+      img.src = picture;
+    });
+
+    document.title = 'Cozy snake';
+
+    this.startMenu = (
+      <StartMenu
+        increaseDifficultyLevel={this.increaseDifficultyLevel.bind(this)}
+        decreaseDifficultyLevel={this.decreaseDifficultyLevel.bind(this)}
+        restartGame={this.restartGame.bind(this)}
+      />
+    );
+    this.gameIn = false;
+    this.timerId = '';
+
     this.setDefaultProps();
     this.welcome();
     this.soundInit();
-    this.gameIn = false;
-    this.timerId = '';
     this.keyDownFunction = (e) => { this.keyPressHandler(e); };
     window.addEventListener('keydown', this.keyDownFunction, false);
   }
@@ -92,20 +100,21 @@ class Game extends Component {
   // needs for component mount after dismounting only to renew state!
   setDefaultProps() {
     if (this.props.difficultyLevel === newbie) {
-      this.props.levelActions.setRabbitsToWin(65);
-      this.props.levelActions.setCurrentSpeed(200);
+      this.props.setRabbitsToWin(65);
+      this.props.setCurrentSpeed(200);
     } else if (this.props.difficultyLevel === veteran) {
-      this.props.levelActions.setRabbitsToWin(100);
-      this.props.levelActions.setCurrentSpeed(170);
+      this.props.setRabbitsToWin(100);
+      this.props.setCurrentSpeed(170);
     } else if (this.props.difficultyLevel === ace) {
-      this.props.levelActions.setRabbitsToWin(120);
-      this.props.levelActions.setCurrentSpeed(150);
+      this.props.setRabbitsToWin(120);
+      this.props.setCurrentSpeed(150);
     }
     this.props.setRenderArray([]);
     this.props.setRabbit('');
     this.props.setBang('');
     this.props.setMessage('');
     this.props.setSpeedRPS(0);
+    this.props.setFireworks('');
   }
 
 
@@ -114,6 +123,8 @@ class Game extends Component {
     this.props.setRabbit('');
     this.props.setBang('');
     this.props.setMessage('');
+    this.props.setFireworks('');
+
 
     /*
     * snakeLogicArray contains information about pieces of snake, each piece information includes:
@@ -163,7 +174,7 @@ class Game extends Component {
     ];
 
 
-    this.props.levelActions.setRabbitsToWin(this.props.winCondition);
+    this.props.setRabbitsToWin(this.props.winCondition);
 
     this.ticCounter = 0;
     this.currentMoveConnecton = 'left'; // direction of the snake head (direction where head attach to other piece)
@@ -175,7 +186,7 @@ class Game extends Component {
     this.rabbitJustEaten = false;
     this.keyPressedThisTic = false;
     this.keyBuffered = '';
-    this.chooseLevel = '';
+    this.props.setChooseLevel('');
     this.gamePaused = false;
     this.gameIn = true;
     this.ticId = '';
@@ -221,37 +232,37 @@ class Game extends Component {
   // changing game parameters which are dependent on game difficulty level
   increaseDifficultyLevel() {
     if (this.props.difficultyLevel === newbie) {
-      this.props.levelActions.setRabbitsToWin(100);
-      this.props.levelActions.setCurrentSpeed(170);
-      this.props.levelActions.setSpeedLimit(130);
-      this.props.levelActions.setSpeedStep(1);
-      this.props.levelActions.setWinCondition(100);
+      this.props.setRabbitsToWin(100);
+      this.props.setCurrentSpeed(170);
+      this.props.setSpeedLimit(130);
+      this.props.setSpeedStep(1);
+      this.props.setWinCondition(100);
     } else if (this.props.difficultyLevel === veteran) {
-      this.props.levelActions.setRabbitsToWin(120);
-      this.props.levelActions.setCurrentSpeed(150);
-      this.props.levelActions.setSpeedLimit(120);
-      this.props.levelActions.setSpeedStep(1);
-      this.props.levelActions.setWinCondition(120);
+      this.props.setRabbitsToWin(120);
+      this.props.setCurrentSpeed(150);
+      this.props.setSpeedLimit(120);
+      this.props.setSpeedStep(1);
+      this.props.setWinCondition(120);
     }
-    this.props.levelActions.increaseDifficultyLevel();
+    this.props.increaseDifficultyLevel();
   }
 
   // changing game parameters which are dependent on game difficulty level
   decreaseDifficultyLevel() {
     if (this.props.difficultyLevel === veteran) {
-      this.props.levelActions.setRabbitsToWin(65);
-      this.props.levelActions.setCurrentSpeed(200);
-      this.props.levelActions.setSpeedLimit(150);
-      this.props.levelActions.setSpeedStep(2);
-      this.props.levelActions.setWinCondition(65);
+      this.props.setRabbitsToWin(65);
+      this.props.setCurrentSpeed(200);
+      this.props.setSpeedLimit(150);
+      this.props.setSpeedStep(2);
+      this.props.setWinCondition(65);
     } else if (this.props.difficultyLevel === ace) {
-      this.props.levelActions.setRabbitsToWin(100);
-      this.props.levelActions.setCurrentSpeed(170);
-      this.props.levelActions.setSpeedLimit(130);
-      this.props.levelActions.setSpeedStep(1);
-      this.props.levelActions.setWinCondition(100);
+      this.props.setRabbitsToWin(100);
+      this.props.setCurrentSpeed(170);
+      this.props.setSpeedLimit(130);
+      this.props.setSpeedStep(1);
+      this.props.setWinCondition(100);
     }
-    this.props.levelActions.decreaseDifficultyLevel();
+    this.props.decreaseDifficultyLevel();
   }
 
 
@@ -328,7 +339,7 @@ class Game extends Component {
   increaseSpeed() {
     if (this.props.currentSpeed <= this.props.speedLimit) return;
     const newCurrentSpeed = (this.props.currentSpeed - this.props.speedStep);
-    this.props.levelActions.setCurrentSpeed(newCurrentSpeed);
+    this.props.setCurrentSpeed(newCurrentSpeed);
     clearInterval(this.ticId);
     this.ticGenerator();
 
@@ -338,7 +349,7 @@ class Game extends Component {
 
   rabbitEaten() {
     this.rabbitsEaten = this.rabbitsEaten + 1;
-    this.props.levelActions.setRabbitsToWin(this.props.winCondition - this.rabbitsEaten);
+    this.props.setRabbitsToWin(this.props.winCondition - this.rabbitsEaten);
 
     if (this.rabbitsEaten === this.props.winCondition) {
       this.congratulations();
@@ -392,12 +403,7 @@ class Game extends Component {
 
   welcome() {
     this.props.setMessage(<div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>);
-
-    this.chooseLevel = (
-      <StartMenu
-        restartGame={this.restartGame.bind(this)}
-      />
-    );
+    this.props.setChooseLevel(this.startMenu);
   }
 
 
@@ -418,13 +424,7 @@ class Game extends Component {
     this.gameIn = false;
     this.removeGame();
     this.props.setMessage(<div className="message">GAME OVER</div>);
-
-    this.chooseLevel = (
-      <StartMenu
-        restartGame={this.restartGame.bind(this)}
-      />
-    );
-    this.forceUpdate();
+    this.props.setChooseLevel(this.startMenu);
   }
 
 
@@ -433,14 +433,21 @@ class Game extends Component {
     this.removeGame();
     if (this.soundIsOn) new Audio(yuhuu).play();
 
-    this.props.setMessage(<div className="message long">CONGRATULATIONS! you win!</div>);
-
-    this.chooseLevel = (
-      <StartMenu
-        restartGame={this.restartGame.bind(this)}
-      />
+    const style = { left: `${156}px`, top: `${125}px` };
+    this.props.setFireworks(
+      <img
+        src={fireworksIMG}
+        alt=""
+        className="fireworks"
+        style={style}
+      />,
     );
-    this.forceUpdate();
+
+    this.timeoutId = setTimeout(() => {
+      this.props.setFireworks('');
+      this.props.setMessage(<div className="message long">CONGRATULATIONS! you win!</div>);
+      this.props.setChooseLevel(this.startMenu);
+    }, 2500);
   }
 
 
@@ -452,7 +459,6 @@ class Game extends Component {
     this.props.setBang('');
 
     this.snakeLogicArray = [];
-
     this.ticCounter = 0;
     this.nextMoveConnection = 'left';
     this.currentMoveConnecton = 'left';
@@ -718,7 +724,8 @@ class Game extends Component {
             {this.props.rabbit}
             {this.props.bang}
             {this.props.message}
-            {this.chooseLevel}
+            {this.props.chooseLevel}
+            {this.props.fireworks}
           </div>
 
           {/* board */}
@@ -797,25 +804,25 @@ const mapStateToProps = state => ({
   bang: state.bang,
   message: state.message,
   speedRPS: state.speedRPS,
+  chooseLevel: state.chooseLevel,
+  fireworks: state.fireworks,
 });
 
-const levelActions = {
-  increaseDifficultyLevel,
-  decreaseDifficultyLevel,
-  setRabbitsToWin,
-  setCurrentSpeed,
-  setSpeedLimit,
-  setSpeedStep,
-  setWinCondition,
-};
-
 const mapDispatchToProps = dispatch => ({
-  levelActions: bindActionCreators(levelActions, dispatch),
+  increaseDifficultyLevel: () => { dispatch(increaseDifficultyLevel()); },
+  decreaseDifficultyLevel: () => { dispatch(decreaseDifficultyLevel()); },
+  setRabbitsToWin: (rabbitsToWin) => { dispatch(setRabbitsToWin(rabbitsToWin)); },
+  setCurrentSpeed: (currentSpeed) => { dispatch(setCurrentSpeed(currentSpeed)); },
+  setSpeedLimit: (speedLimit) => { dispatch(setSpeedLimit(speedLimit)); },
+  setSpeedStep: (speedStep) => { dispatch(setSpeedStep(speedStep)); },
+  setWinCondition: (winCondition) => { dispatch(setWinCondition(winCondition)); },
   setRenderArray: (renderArray) => { dispatch(setRenderArray(renderArray)); },
   setRabbit: (rabbit) => { dispatch(setRabbit(rabbit)); },
   setBang: (bang) => { dispatch(setBang(bang)); },
   setMessage: (message) => { dispatch(setMessage(message)); },
   setSpeedRPS: (speedRPS) => { dispatch(setSpeedRPS(speedRPS)); },
+  setChooseLevel: (chooseLevel) => { dispatch(setChooseLevel(chooseLevel)); },
+  setFireworks: (fireworks) => { dispatch(setFireworks(fireworks)); },
 });
 
 export default connect(

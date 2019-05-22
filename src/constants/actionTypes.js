@@ -13,3 +13,6 @@ export const SET_RABBIT = 'SET_RABBIT';
 export const SET_BANG = 'SET_BANG';
 export const SET_MESSAGE = 'SET_MESSAGE';
 export const SET_SPEED_RPS = 'SET_SPEED_RPS';
+
+export const SET_CHOOSE_LEVEL = 'SET_CHOOSE_LEVEL';
+export const SET_FIREWORKS = 'SET_FIREWORKS';

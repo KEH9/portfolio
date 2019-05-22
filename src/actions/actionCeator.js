@@ -11,6 +11,8 @@ import {
   SET_BANG,
   SET_MESSAGE,
   SET_SPEED_RPS,
+  SET_CHOOSE_LEVEL,
+  SET_FIREWORKS,
 } from '../constants/actionTypes';
 
 
@@ -71,4 +73,14 @@ export const setMessage = message => ({
 export const setSpeedRPS = speedRPS => ({
   type: SET_SPEED_RPS,
   speedRPS,
+});
+
+export const setChooseLevel = chooseLevel => ({
+  type: SET_CHOOSE_LEVEL,
+  chooseLevel,
+});
+
+export const setFireworks = fireworks => ({
+  type: SET_FIREWORKS,
+  fireworks,
 });

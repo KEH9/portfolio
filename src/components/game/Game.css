@@ -112,7 +112,7 @@
   }
   
   
-  .head, .body, .bodyCurve, .tail, .rabbit, .bang {
+  .head, .body, .bodyCurve, .tail, .rabbit, .bang, .fireworks {
     position: absolute;
   }
   
@@ -120,7 +120,7 @@
     z-index: 9;
   }
   
-  .bang {
+  .bang, .fireworks {
     z-index: 10;
   }
   

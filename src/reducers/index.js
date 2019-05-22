@@ -9,7 +9,7 @@ import {
 } from './changeDifficultyLevel';
 
 import {
-  setRenderArray, setRabbit, setBang, setMessage, setSpeedRPS,
+  setRenderArray, setRabbit, setBang, setMessage, setSpeedRPS, setChooseLevel, setFireworks,
 } from './renderState';
 
 const rootReducer = combineReducers({
@@ -24,6 +24,8 @@ const rootReducer = combineReducers({
   bang: setBang,
   message: setMessage,
   speedRPS: setSpeedRPS,
+  chooseLevel: setChooseLevel,
+  fireworks: setFireworks,
 });
 
 export default rootReducer;
