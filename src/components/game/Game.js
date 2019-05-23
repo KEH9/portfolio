@@ -1,11 +1,4 @@
 // todo
-// + проверить - будет ли работать без bindActionCreator
-// + прокинуть изменение левелов сложности в StartMenu
-// + сделать разные тайтлы
-// -+ добавить прелоады звука и пикчей
-// + 8 бит фейерверк и протестить победу
-// навести красоту
-// коменты добавить!!!
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -314,9 +307,7 @@ class Game extends Component {
   }
 
 
-  /*
-* Changes direction of the snake movement
-*/
+  // Changes direction of the snake movement
   changeDirection(key) {
     if ((key === 37 || key === 65) && this.currentMoveConnecton !== 'left') { // left arrow
       this.nextMoveConnection = 'right';
@@ -346,7 +337,7 @@ class Game extends Component {
     this.props.setSpeedRPS(((Math.round(1000 / this.props.currentSpeed * 100)) / 100).toFixed(2));
   }
 
-
+  // Snake got the rabbit event
   rabbitEaten() {
     this.rabbitsEaten = this.rabbitsEaten + 1;
     this.props.setRabbitsToWin(this.props.winCondition - this.rabbitsEaten);
@@ -381,7 +372,7 @@ class Game extends Component {
     this.timeoutId = setTimeout(() => { this.gameOver(); }, 2000);
   }
 
-
+  // snake hit the border
   collision(x, y) {
     this.stopTic();
     if (this.soundIsOn) new Audio(aaarrrrr).play();
@@ -400,13 +391,13 @@ class Game extends Component {
     this.timeoutId = setTimeout(() => { this.gameOver(); }, 2000);
   }
 
-
+  // welcome menu (game just loaded)
   welcome() {
     this.props.setMessage(<div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>);
     this.props.setChooseLevel(this.startMenu);
   }
 
-
+  // pausing/unpausing game
   pauseGame() {
     if (!this.gamePaused) {
       this.gamePaused = !this.gamePaused;
@@ -419,7 +410,7 @@ class Game extends Component {
     }
   }
 
-
+  // game over menu
   gameOver() {
     this.gameIn = false;
     this.removeGame();
@@ -427,7 +418,7 @@ class Game extends Component {
     this.props.setChooseLevel(this.startMenu);
   }
 
-
+  // win event
   congratulations() {
     this.gameIn = false;
     this.removeGame();
@@ -450,7 +441,7 @@ class Game extends Component {
     }, 2500);
   }
 
-
+  // stoping tic and setting default condition of the game
   removeGame() {
     this.stopTic();
 
@@ -509,7 +500,7 @@ class Game extends Component {
     return false;
   }
 
-
+  // adding new head to logic array
   addHeadToLogicArray() {
     this.lastHeadConnection = this.nextMoveConnection;
 
@@ -550,7 +541,7 @@ class Game extends Component {
     }
   }
 
-
+  // adding new body piece to logic array
   addNewBodyPieceToLogicArray() {
     const newBodyPiece = {};
     newBodyPiece.x = this.snakeLogicArray[0].x;
@@ -585,13 +576,13 @@ class Game extends Component {
     this.snakeLogicArray.splice(1, 0, newBodyPiece);
   }
 
-
+  // removing last body piece from logic array
   removeLastBodyPieceFromLogicArray() {
     if (this.rabbitJustEaten) return;
     this.snakeLogicArray.splice((this.snakeLogicArray.length - 1), 1);
   }
 
-
+  // adding tail piece to logic array
   addTailToLogicArray() {
     if (this.rabbitJustEaten) {
       this.rabbitJustEaten = false;
@@ -619,7 +610,7 @@ class Game extends Component {
     this.snakeLogicArray[lastPiecePosition] = lastPiece;
   }
 
-
+  // adding new rabbit to game field
   addRabbit() {
     let x; let y; let
       checkResult;
@@ -646,9 +637,7 @@ class Game extends Component {
   }
 
 
-  /*
-* Makes render array from logic array
-*/
+  // convert logic array to render array
   createRenderSnakeArray() {
     const newRenderArray = [];
 
@@ -667,7 +656,7 @@ class Game extends Component {
     this.props.setRenderArray(newRenderArray);
   }
 
-
+  // initiating sound icon
   soundInit() {
     this.soundIsOn = true;
     this.sound = (
@@ -680,7 +669,7 @@ class Game extends Component {
     );
   }
 
-
+  // mute / unmute sound
   soundToggle() {
     if (this.soundIsOn) {
       this.soundIsOn = false;
