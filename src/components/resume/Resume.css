@@ -1,0 +1,30 @@
+  body {
+  }
+
+  .resume {
+  font-family: "Martel-subset", Georgia;
+  font-size: 20px;
+  color: rgb(68, 68, 68);
+  }
+
+  .paratext {
+    font-family: "Martel-subset", Georgia;
+    font-size: 20px;
+    height: 300px;
+    color: white;
+    font-size: 40px;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 300px;
+  }
+
+  .header {
+    background-color: aquamarine;
+    font-family: "Times New Roman", Times, serif;
+    padding: 60px;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+  }
+

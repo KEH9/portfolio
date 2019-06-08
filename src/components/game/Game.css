@@ -2,10 +2,9 @@
     font-family: 'slkscr';
     src: url("slkscr.ttf");
   }
-  
+
   body {
     font-family: 'slkscr';
-    overflow: hidden;
   }
   
   img {
@@ -53,6 +52,7 @@
   }
   
   .container {
+    overflow: hidden;
     height: 97vh;
     width: 99.8%;
     background: 
