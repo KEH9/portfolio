@@ -732,7 +732,7 @@ class Game extends Component {
           <div className="toPlay">To play the game use cursor keys or aswd keys and space</div>
           <div className="difficultyLevel">
             Your difficulty level is
-            <span className="info"> {this.difficultyLevel} </span>
+            <span className="info"> {this.props.difficultyLevel} </span>
           </div>
 
           <div className="speedRPS">
