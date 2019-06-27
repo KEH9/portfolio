@@ -8,6 +8,9 @@ import PastJobs from './sections/PastJobs';
 import Education from './sections/Education';
 import PersonalStatement from './sections/PersonalStatement';
 import Hobbies from './sections/Hobbies';
+import Personal from './sections/Personal';
+import Contacts from './sections/Contacts';
+
 
 const Paratext = () => (
   <div className="paratext"> Front-end software developer </div>
@@ -45,14 +48,20 @@ class Resume extends Component {
 
         <ParallaxImage />
 
-        <Skills />
-        <OtherITSkills />
-        <PastJobs />
-        <Education />
-        <PersonalStatement />
-        <Hobbies />
+        <div className="resume">
 
-        <div className="special">Looking for a visa sponsor or distant job.</div>
+          <div className="resume-main">
+            <Personal />
+            <Skills />
+            <OtherITSkills />
+            <PastJobs />
+            <Education />
+            <PersonalStatement />
+            <Hobbies />
+            <Contacts />
+          </div>
+
+        </div>
 
 
       </div>
