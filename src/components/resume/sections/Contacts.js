@@ -24,7 +24,7 @@ export default function Contacts() {
       </p>
 
       <p>
-        <a href="https://vk.com/innokentiy_k">vk.com</a> - to see this account send me a friend request
+        <span className="special"> <a href="https://vk.com/innokentiy_k">vk.com</a></span> - to see this account send me a friend request
       </p>
 
     </div>

@@ -1,4 +1,5 @@
 // todo
+// clean old img
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';

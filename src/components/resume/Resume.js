@@ -2,6 +2,7 @@ import './Resume.css';
 import React, { Component } from 'react';
 import { ParallaxBanner } from 'react-scroll-parallax';
 import paraimage from './img/whistler.jpg';
+import myPhoto from './img/face.png';
 import Skills from './sections/Skills';
 import OtherITSkills from './sections/OtherItSkills';
 import PastJobs from './sections/PastJobs';
@@ -22,7 +23,7 @@ const ParallaxImage = () => (
     layers={[
       {
         image: paraimage,
-        amount: 0.7,
+        amount: 0.3,
       },
       {
         children: <Paratext />,
@@ -30,7 +31,7 @@ const ParallaxImage = () => (
       },
     ]}
     style={{
-      height: '600px',
+      height: '800px',
     }}
   />
 );
@@ -46,9 +47,16 @@ class Resume extends Component {
 
       <div className="wrapper">
 
-        <ParallaxImage />
 
-        <div className="resume">
+        <div className="resume-left">
+          <img src={myPhoto} alt="me" className="my-photo" />
+        </div>
+
+        <div className="resume-right">
+          <div className="innokentiy-kuznetsov">Innokentiy Kuznetsov</div>
+        </div>
+
+        <div className="resume-rightzzz">
 
           <div className="resume-main">
             <Personal />
