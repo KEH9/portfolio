@@ -4,6 +4,11 @@ A:visited {
   color: #808000; /* Цвет посещенной ссылки */
 }
 
+.parallax {
+  z-index: 3 !important;
+}
+
+
 .resume {
 font-family: "Martel-subset", Georgia;
 font-size: 20px;
@@ -59,14 +64,16 @@ color: rgb(68, 68, 68);
   padding-left: 20px;
 }
 
-.resume-left {
+.header-left {
+  position: relative;
   float: left;
   width: 22.1528vw;
   height: 62.9861vw;
   margin-top: 4.1667vw;
   margin-left: 4.1667vw;
   background-color: #fd4800;
-  border: 3px solid green;
+  border: 0.35vw solid #fff;
+  z-index: 1000;
 }
 
 
@@ -80,7 +87,7 @@ color: rgb(68, 68, 68);
   margin: 0 auto;
   padding-bottom: 0.5vw;
   width: 15.55555vw;
-  height: 3.6vw;
+  height: 3.7vw;
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.8056vw;
   font-weight: 500;
@@ -93,33 +100,74 @@ color: rgb(68, 68, 68);
 
 }
 
-
 .personal-info.first {
   margin-top: -1vw;
 }
 
 .personal-info.end-block {
-  border-bottom: 2px solid #FD9166;
+  border-bottom: 0.3vw solid #FD9166;
 }
 
 .personal-info.last-info {
   border-bottom: 0;
 }
 
+.header-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 3.6vw;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1.8056vw;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  color: #ffffff;
+  border-radius: 1vw;
+  border: 0.3vw solid #ffffff;
 
-.resume-right {
+}
+
+.header-button.contacts {
+  width: 18vw;
+  margin-top: 2vw;
+}
+
+.button-container {
+  margin-top: 21.9vw;
+}
+
+.header-button.snake {
+  float: left;
+  width: 19vw;
+  margin-top: 2vw;
+  background: #fd4800;
+}
+
+.header-button.pdf {
+  float: left;
+  width: 23vw;
+  margin-top: 2vw;
+  margin-left: 2vw;
+  background: #000000;
+}
+
+.header-right {
+  position: absolute;  
   float: left;
   display: block;
   width: 47.7431vw;
   height: 62.9861vw;
   margin-top: 4.1667vw;
-  margin-left: 8.75vw;
-  border: 3px solid green;
-
+  margin-left: 39vw;
+  z-index: 1000;
 }
 
 .innokentiy-kuznetsov {
-  -webkit-text-stroke: 3px #000;
+  -webkit-text-stroke: 3px #fff;
   font-family: 'Roboto Black', Arial, sans-serif;
   font-size: 8vw;
   font-weight: 800;
@@ -132,7 +180,7 @@ color: rgb(68, 68, 68);
 }
 
 .frontend {
-  margin-top: 2vw;
+  margin-top: 4vw;
   margin-left: 0.2vw;
   font-family: 'Roboto Black', Arial, sans-serif;
   font-size: 3.4722vw;
@@ -141,7 +189,7 @@ color: rgb(68, 68, 68);
   font-stretch: normal;
   line-height: 1.6;
   letter-spacing: normal;
-  color: #888888;
+  color: #fff;
 }
 
 
