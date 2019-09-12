@@ -1,0 +1,21 @@
+A:visited {
+  color: #808000; /* Цвет посещенной ссылки */
+}
+
+.resume-main {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 25px;
+}
+
+.wrapper {
+  font-family: "Martel-subset", Georgia !important;
+  font-size: 20px;
+  color: rgb(68, 68, 68);
+  padding: 0;
+}
+
+.special {
+  font-weight: bold;
+}
