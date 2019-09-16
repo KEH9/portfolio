@@ -4,31 +4,38 @@ import React from 'react';
 export default function PastJobs() {
   return (
     <div className="past-jobs">
+
       <h1>Past Jobs</h1>
 
+      <div className="paragraph">
+        <h3>2016 / present time</h3>
+        <p className="job">
+          Front-end developing studies.
+        </p>
+      </div>
 
-      <h3>2016 – present time</h3>
-      <p>
-        Front-end developing studies.
-      </p>
+      <div className="paragraph">
+        <h3>2012-2018</h3>
+        <p className="job">
+          Private entrepreneur.
+        </p>
+      </div>
 
-
-      <h3>2012-2018</h3>
-      <p>
-        Private entrepreneur.
-      </p>
-
-
-      <h3>Wurth-Eurasien 2010-2012</h3>
-      <p>
-        Position:  Project manager
-      </p>
-      <p>
-        General objectives of the project: delivery, distribution, installation and servicing of the car diagnosis system “WOW (Wurth Online World) Snooper” which includes soft and hardware components.
-      </p>
-      <p>
-        Side project: The creation  geographic information system for internal use only. The purpose of the geoinformational system is to output data of sales and customers from “1C” (Russian Axapta) to the high-resolution map of the cities. The data can be displayed by different ways and colors depend on the parameters. I used OpenOffice.org Basic to create it.
-      </p>
+      <div className="paragraph">
+        <h3>2010/2012</h3>
+        <p>
+          <span className="job">Wurth-Eurasien</span>
+          <span className="position">Position:  Project manager</span>
+          General objectives of the project: delivery, distribution, installation and
+          servicing of the car diagnosis system “WOW (Wurth Online World) Snooper”
+          which includes soft and hardware components.<br />
+          Side project: The creation  geographic information system for internal
+          use only. The purpose of the geoinformational system is to output data
+          of sales and customers from “1C” (Russian Axapta) to the high-resolution
+          map of the cities. The data can be displayed by different ways and colors
+          depend on the parameters. I used OpenOffice.org Basic to create it.
+        </p>
+      </div>
 
 
       <h3>Vitamin-Plus 2009-2010</h3>

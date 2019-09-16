@@ -10,7 +10,6 @@ import PastJobs from './sections/PastJobs';
 import Education from './sections/Education';
 import PersonalStatement from './sections/PersonalStatement';
 import Hobbies from './sections/Hobbies';
-import Personal from './sections/Personal';
 import Contacts from './sections/Contacts';
 
 
@@ -60,18 +59,16 @@ class Resume extends Component {
           headerShift={this.state.headerShift}
         />
 
-        <div className="resume-rightzzz">
+        <div className="resume-right">
 
-          <div className="resume-main">
-            <Personal />
-            <Skills />
-            <OtherITSkills />
-            <PastJobs />
-            <Education />
-            <PersonalStatement />
-            <Hobbies />
-            <Contacts />
-          </div>
+
+          <Skills />
+          <OtherITSkills />
+          <PastJobs />
+          <Education />
+          <PersonalStatement />
+          <Hobbies />
+          <Contacts />
 
         </div>
 

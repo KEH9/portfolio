@@ -33,7 +33,7 @@
   line-height: 1.54;
   letter-spacing: normal;
   color: #ffffff;
-  border-bottom: 1px solid #FD9166;
+  border-bottom: 0.06944vw solid #FD9166;
 
 }
 
@@ -104,14 +104,14 @@
 }
 
 .innokentiy-kuznetsov {
-  -webkit-text-stroke: 3px #fff;
+  -webkit-text-stroke: 0.2083vw #fff;
   font-family: 'Roboto Black', Arial, sans-serif;
   font-size: 8vw;
   font-weight: 800;
   font-style: normal;
   font-stretch: normal;
   line-height: 0.93;
-  letter-spacing: 2.67px;
+  letter-spacing: 0.1806vw;
   color: rgba(255, 255, 255, 0);
   margin-top: 9.3vw;
 }
