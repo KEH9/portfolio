@@ -8,32 +8,36 @@ export default function Skills() {
 
       <div className="paragraph">
         <h3>HTML5, CSS3, JavaScript</h3>
-        <p>
+        <div>
           Including ES6, regular explanations, ShadowDOM, AJAX, COMET, etc.
           Feel confident with it. Can format code following Google JavaScript
           style guide or Air BnB rules.
-        </p>
+        </div>
       </div>
 
       <div className="paragraph">
         <h3>
           React & Redux
         </h3>
-        <p>
-          I gain some expirience with this libraries creating the cozy snake game.
-          You can play this game and view source code of it on my
-          <a href="https://github.com/KEH9/portfolio">GitHub</a>. <br />
-          Additional libraries: Router v.4, bindActionCreators.
-        </p>
+        <div>
+          <p>
+            I gain some expirience with this libraries creating the cozy snake game.
+            You can play this game and view source code of it on my &nbsp;
+            <a href="https://github.com/KEH9/portfolio">GitHub</a>.
+          </p>
+          <p>
+            Additional libraries: Router v.4, bindActionCreators.
+          </p>
+        </div>
       </div>
 
       <div className="paragraph">
         <h3>
           TypeScript
         </h3>
-        <p>
+        <div>
           I got the education through official tutotial, however did not had practised it.
-        </p>
+        </div>
       </div>
 
 
@@ -41,19 +45,19 @@ export default function Skills() {
         <h3>
           jQuery
         </h3>
-        <p>I obtain lite experience with it. It seems for me a little bit
+        <div>I obtain lite experience with it. It seems for me a little bit
           outdated in front of React, however I can work with it if it necessary.
-        </p>
+        </div>
       </div>
 
       <div className="paragraph">
         <h3>
           Node.js
         </h3>
-        <p>
+        <div>
           I gain the very base knowledge of it, can build easy server,
           interested to increase this skill.
-        </p>
+        </div>
       </div>
 
 
@@ -61,9 +65,9 @@ export default function Skills() {
         <h3>
           MongoDB
         </h3>
-        <p>
+        <div>
           I used it with mongoose library on Node.js server.
-        </p>
+        </div>
       </div>
 
 
@@ -73,7 +77,7 @@ export default function Skills() {
         <h3 className="last">
         Npm, ESLint, JSDoc, GIT (GitHub), Zeplin
         </h3>
-        <p className="last">I used this technologies frequently while studying.</p>
+        <div className="last">I used this technologies frequently while studying.</div>
       </div>
 
 

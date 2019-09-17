@@ -85,7 +85,7 @@ h2 {
 
 }
 
-.paragraph p {
+.paragraph div {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.388889vw;
   font-weight: normal;
@@ -107,6 +107,10 @@ h2 {
   border-bottom: 0.06944vw solid #fff !important;
 }
 
+.underlining {
+  border-bottom: 0.06944vw solid #fd4800;
+}
+
 .job {
   font-family: 'Roboto Regular', Arial, sans-serif;
   font-size: 1.80555vw !important;
@@ -123,3 +127,16 @@ h2 {
   border-radius: 0.41667vw;
   color: #ffffff;
 }
+
+.cambridge {
+  width: 7.5694vw;
+  margin-top: 2vw;
+  margin-left: 3vw;
+}
+
+.urgeu {
+  width: 11.4583vw;
+  margin-top: 2vw;
+  margin-left: 1.6vw;
+}
+
