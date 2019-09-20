@@ -3,18 +3,17 @@ import React from 'react';
 import paraimage from '../img/whistler.jpg';
 import myPhoto from '../img/face.png';
 
-export default function Header(props) {
+export default function Header() {
   return (
 
     <div>
 
       <img src={paraimage}
         className="parallax"
-        style={{ width: props.widthWithoutScroll }}
         alt="Innokentiy Kuznetsov"
       />
 
-      <div className="header-left" style={{ marginTop: props.headerShift }}>
+      <div className="header-left">
         <img src={myPhoto} alt="me" className="my-photo" />
         <div className="personal-info first">Languages:</div>
         <div className="personal-info">Russian</div>
@@ -26,7 +25,7 @@ export default function Header(props) {
       </div>
 
 
-      <div className="header-right" style={{ marginTop: props.headerShift }}>
+      <div className="header-right">
         <div className="innokentiy-kuznetsov">Innokentiy Kuznetsov</div>
         <div className="frontend">Front-end software developer</div>
         <div className="button-container">

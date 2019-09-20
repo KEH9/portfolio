@@ -2,6 +2,7 @@ import './style/Resume.css';
 import './style/Header.css';
 import React, { Component } from 'react';
 import simpleParallax from 'simple-parallax-js';
+import footer from './img/footer.jpg';
 
 import Header from './sections/Header';
 import Skills from './sections/Skills';
@@ -14,29 +15,12 @@ import Contacts from './sections/Contacts';
 
 
 class Resume extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      widthWithoutScroll: props.widthWithoutScroll,
-      headerShift: props.headerShift,
-    };
-  }
-
-
   componentWillMount() {
   }
-
 
   componentDidMount() {
     document.title = 'Resume';
 
-    const parallaxHeightCalc = (document.body.offsetWidth * 0.713190511489993);
-    const marginShift = (document.body.offsetWidth * 0.037);
-    const headerShift = -(Math.round(parallaxHeightCalc) - Math.round(marginShift));
-    this.setState({
-      widthWithoutScroll: `${document.body.offsetWidth}px`,
-      headerShift: `${headerShift}px`,
-    });
     const images = document.querySelectorAll('.parallax');
     // eslint-disable-next-line new-cap, no-new
     new simpleParallax(images, {
@@ -54,14 +38,9 @@ class Resume extends Component {
 
       <div className="wrapper">
 
-        <Header
-          widthWithoutScroll={this.state.widthWithoutScroll}
-          headerShift={this.state.headerShift}
-        />
+        <Header />
 
         <div className="resume-right">
-
-
           <Skills />
           <OtherITSkills />
           <PastJobs />
@@ -69,7 +48,10 @@ class Resume extends Component {
           <PersonalStatement />
           <Hobbies />
           <Contacts />
+        </div>
 
+        <div className="footer">
+          <img src={footer} alt="footer" className="footer" />
         </div>
 
 

@@ -1,4 +1,5 @@
 .parallax {
+  width: 100vw;
   z-index: 3 !important;
 }
 
@@ -7,7 +8,7 @@
   float: left;
   width: 22.1528vw;
   height: 62.9861vw;
-  margin-top: 4.1667vw;
+  margin-top: -67.5vw;
   margin-left: 4.1667vw;
   background-color: #fd4800;
   border: 0.35vw solid #fff;
@@ -98,7 +99,7 @@
   display: block;
   width: 47.7431vw;
   height: 62.9861vw;
-  margin-top: 4.1667vw;
+  margin-top: -67.5vw;
   margin-left: 39vw;
   z-index: 1000;
 }

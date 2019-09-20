@@ -6,9 +6,16 @@ export default function Hobbies() {
     <div className="hobbies">
       <h1>Hobbies</h1>
 
-      <p>
-        Board games, meditation, singing, dancing, popular science in history, anthropology, philosophy, biology, chemistry etc, DIY, home distillery.
-      </p>
+      <div className="paragraph">
+        <div className="last solo">
+          <p>
+            Board games, meditation, singing, dancing, popular science in history,
+            anthropology, philosophy, biology, chemistry etc, DIY, home distillery.
+          </p>
+
+        </div>
+
+      </div>
 
     </div>
 
