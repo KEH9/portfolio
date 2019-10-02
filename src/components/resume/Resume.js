@@ -1,8 +1,8 @@
 import './style/Resume.css';
 import './style/Header.css';
+import './style/Footer.css';
 import React, { Component } from 'react';
 import simpleParallax from 'simple-parallax-js';
-import footer from './img/footer.jpg';
 
 import Header from './sections/Header';
 import Skills from './sections/Skills';
@@ -12,6 +12,7 @@ import Education from './sections/Education';
 import PersonalStatement from './sections/PersonalStatement';
 import Hobbies from './sections/Hobbies';
 import Contacts from './sections/Contacts';
+import Footer from './sections/Footer';
 
 
 class Resume extends Component {
@@ -50,10 +51,7 @@ class Resume extends Component {
           <Contacts />
         </div>
 
-        <div className="footer">
-          <img src={footer} alt="footer" className="footer" />
-        </div>
-
+        <Footer />
 
       </div>
 

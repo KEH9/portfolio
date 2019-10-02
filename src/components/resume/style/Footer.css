@@ -1,0 +1,58 @@
+.footer-picture {
+  position: absolute;
+  width: 100vw;
+  margin-top: 4vw;
+  z-index: 3;
+}
+
+.footer-right {
+  position: absolute;  
+  float: left;
+  display: block;
+  width: 47.7431vw;
+  height: 10.9861vw;
+  margin-top: -12vw;
+  margin-left: 39vw;
+  z-index: 1000;
+}
+
+.footer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 3.6vw;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1.8056vw;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  color: #ffffff;
+  border-radius: 1vw;
+  border: 0.3vw solid #ffffff;
+
+}
+
+.footer-button-container {
+  position: relative;
+  margin-top: 20vw;
+  z-index: 1100;
+
+}
+
+.footer-button.snake {
+  float: left;
+  width: 19vw;
+  margin-top: 2vw;
+  background: #fd4800;
+}
+
+.footer-button.pdf {
+  float: left;
+  width: 23vw;
+  margin-top: 2vw;
+  margin-left: 2vw;
+  background: #000000;
+}

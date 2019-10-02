@@ -28,7 +28,7 @@ export default function Header() {
       <div className="header-right">
         <div className="innokentiy-kuznetsov">Innokentiy Kuznetsov</div>
         <div className="frontend">Front-end software developer</div>
-        <div className="button-container">
+        <div className="header-button-container">
           <div className="header-button snake">Cozy snake game</div>
           <div className="header-button pdf">Download resume PDF</div>
         </div>

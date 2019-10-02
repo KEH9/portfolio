@@ -13,7 +13,7 @@ export default function Education() {
         <h3 className="last"><img src={cambridge} alt="Cambridge university" className="cambridge" /> </h3>
         <div className="last">
           <p>
-            <span className="job">
+            <span className="university">
               International English Language Testing System (IELTS) University of
               Cambridge ESOL Examinations.
             </span>
@@ -32,7 +32,7 @@ export default function Education() {
         <h3 className="last"><img src={urgeu} alt="UrGEU" className="urgeu" /></h3>
         <div className="last">
           <p>
-            <span className="job">
+            <span className="university">
               Ural State University of Economics.
             </span>
             <p>

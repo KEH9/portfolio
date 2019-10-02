@@ -46,7 +46,7 @@ export default function PastJobs() {
         <h3>2009 / 2010</h3>
         <div>
           <span className="job">Vitamin-Plus </span>
-          <span className="position">Position:  Specialist <br />for the software integration</span>
+          <span className="position">Position:  Specialist for the<br /> software integration</span>
           <p>
             - 1C based software integration and improvement (integration with the front office
             software, writing code for automatic creation of the documents, calculations,
@@ -78,7 +78,7 @@ export default function PastJobs() {
             During this work I was awarded the silver mark of the Ministry of Finance of
             the Republic Sakha (Yakutia) for achievements in state finance digitalization.
           </p>
-          <span className="position">Position: Specialist <br />for the software integration</span>
+          <span className="position">Position: Specialist for the <br />software integration</span>
           <p>
             - Setting up and integration of software system (SS) Sapphire.
             This package is designed to automate the planning and forecasting

@@ -28,6 +28,8 @@ A:visited {
 }
 
 h1 {
+  display: block;
+  position: relative;
   font-family: 'Roboto Black', Arial, sans-serif;
   font-size: 7.1vw;
   font-weight: 700;
@@ -42,6 +44,23 @@ h1 {
   border-top: 1.38889vw solid #fd4800;
   border-bottom: 0.3472vw solid #fd4800;
 }
+
+h1::after {
+  content: "";
+  background-image: url(../img/combined-shape.png);
+  background-size: 9.9128vw 16.0521vw;
+  display: block;
+  position: absolute;
+  width: 9.9128vw;
+  height: 16.0521vw;
+  margin-left: 50vw;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 
 h2 {
   -webkit-text-stroke: 0.0694vw #fd4800;
@@ -115,8 +134,28 @@ h2 {
 }
 
 .job {
+  display: block;
+  position: relative;
   font-family: 'Roboto Regular', Arial, sans-serif;
   font-size: 1.80555vw !important;
+  padding-right: 4vw;
+
+}
+
+span.job::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-image: url(../img/path.png);
+  background-size: 1.7361vw 0.8333vw;
+  width: 1.7361vw;
+  height: 0.8333vw;
+  left: 29vw;
 }
 
 .position {
@@ -131,6 +170,25 @@ h2 {
   color: #ffffff;
 }
 
+.position::after {
+  content: "";
+  background-image: url(../img/group-25.png);
+  background-size: 1.5278vw 1.5278vw;
+  display: block;
+  position: absolute;
+  width: 1.5278vw;
+  height: 1.5278vw;
+  margin-top: -1.1vw;
+  margin-left: 27.5vw
+}
+
+.university {
+  display: block;
+  position: relative;
+  font-family: 'Roboto Regular', Arial, sans-serif;
+  font-size: 1.80555vw !important;
+}
+
 .cambridge {
   width: 7.5694vw;
   margin-top: 2vw;
@@ -143,8 +201,3 @@ h2 {
   margin-left: 1.6vw;
 }
 
-.footer {
-  position: absolute;
-  width: 100vw;
-  margin-top: 4vw;
-}
