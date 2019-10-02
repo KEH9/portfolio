@@ -99,7 +99,6 @@ h2 {
   padding-bottom: 3vw;
   color: #fd4800;
   border-bottom: 0.06944vw solid #fd4800;
-
 }
 
 .paragraph div {
@@ -139,10 +138,9 @@ h2 {
   font-family: 'Roboto Regular', Arial, sans-serif;
   font-size: 1.80555vw !important;
   padding-right: 4vw;
-
 }
 
-span.job::after {
+span.opened::after, span.closed::after {
   content: "";
   position: absolute;
   display: block;
@@ -157,6 +155,25 @@ span.job::after {
   height: 0.8333vw;
   left: 29vw;
 }
+
+span.closed::after {
+  transform: rotate(180deg);
+}
+
+
+.job-wrapper{
+  display: block;
+  max-height: 200vw;
+  transition: all 0.3s;
+}
+
+
+.hide-it {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+
 
 .position {
   display: block;
@@ -192,12 +209,12 @@ span.job::after {
 .cambridge {
   width: 7.5694vw;
   margin-top: 2vw;
-  margin-left: 3vw;
+  margin-left: 1.5vw;
 }
 
 .urgeu {
   width: 11.4583vw;
   margin-top: 2vw;
-  margin-left: 1.6vw;
+  margin-left: 0.0vw;
 }
 
