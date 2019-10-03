@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
+import Slash from '../img/Slash.png';
 
 export default class PastJobs extends Component {
   componentDidMount() {
@@ -36,21 +37,21 @@ export default class PastJobs extends Component {
         <h1>Past Jobs</h1>
 
         <div className="paragraph">
-          <h3>2016 / present time</h3>
+          <h3>2016 <img src={Slash} alt="/" className="slash" /> present time</h3>
           <div>
             <span className="job">Front-end developing studies.</span>
           </div>
         </div>
 
         <div className="paragraph">
-          <h3>2012 / 2018</h3>
+          <h3>2012 <img src={Slash} alt="/" className="slash" /> 2018</h3>
           <div>
             <span className="job">Private entrepreneur.</span>
           </div>
         </div>
 
         <div className="paragraph">
-          <h3>2010 / 2012</h3>
+          <h3>2010 <img src={Slash} alt="/" className="slash" /> 2012</h3>
           <div>
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               Wurth-Eurasien
@@ -75,7 +76,7 @@ export default class PastJobs extends Component {
 
 
         <div className="paragraph">
-          <h3>2009 / 2010</h3>
+          <h3>2009 <img src={Slash} alt="/" className="slash" /> 2010</h3>
           <div>
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               Vitamin-Plus
@@ -100,7 +101,7 @@ export default class PastJobs extends Component {
 
         <div className="paragraph">
 
-          <h3>2007 / 2009</h3>
+          <h3>2007 <img src={Slash} alt="/" className="slash" /> 2009</h3>
           <div>
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               Center for Informational and Finance Technologies (CIFT)
@@ -144,7 +145,7 @@ export default class PastJobs extends Component {
 
         <div className="paragraph">
 
-          <h3>2006 / 2007</h3>
+          <h3>2006 <img src={Slash} alt="/" className="slash" /> 2007</h3>
           <div>
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               The Network of Pharmacies «Atoll-Pharm» /
@@ -160,7 +161,7 @@ export default class PastJobs extends Component {
 
 
         <div className="paragraph">
-          <h3>2002 / 2006</h3>
+          <h3>2002 <img src={Slash} alt="/" className="slash" /> 2006</h3>
           <div>
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               Finance-Budget department of City Ekaterinburg
@@ -177,7 +178,7 @@ export default class PastJobs extends Component {
 
         <div className="paragraph">
 
-          <h3 className="last">2000 / 2001</h3>
+          <h3 className="last">2000 <img src={Slash} alt="/" className="slash" /> 2001</h3>
           <div className="last">
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               PG «UralInvestEnergo»

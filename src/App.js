@@ -9,14 +9,12 @@ import './App.css';
 
 import Game from './components/game/Game';
 import Resume from './components/resume/Resume';
-import Navigation from './components/Navigation';
 
 
 function App() {
   return (
 
     <BrowserRouter>
-      <Navigation />
       <Switch>
         <Route exact path="/" component={Resume} />
         <Route path="/game" component={Game} />

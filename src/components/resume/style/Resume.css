@@ -2,8 +2,12 @@ body {
   overflow-x: hidden;
 }
 
-A:visited {
-  color: #808000; /* Цвет посещенной ссылки */
+a.snake {
+  text-decoration: none;
+}
+
+A:visited.snake {
+  color: #ffffff; /* Цвет посещенной ссылки */
 }
 
 .wrapper {
@@ -24,7 +28,6 @@ A:visited {
   width: 48.5vw;
   margin-top: 6vw;
   margin-left: 39vw;
-  border: 1px dashed green;
 }
 
 h1 {
@@ -140,6 +143,11 @@ h2 {
   padding-right: 4vw;
 }
 
+.opened, .closed {
+  cursor: pointer;
+
+}
+
 span.opened::after, span.closed::after {
   content: "";
   position: absolute;
@@ -218,3 +226,9 @@ span.closed::after {
   margin-left: 0.0vw;
 }
 
+.slash {
+  position: relative;
+  width: 0.9722vw;
+  height: 2.7778vw;
+  top: 0.8vw;
+}
