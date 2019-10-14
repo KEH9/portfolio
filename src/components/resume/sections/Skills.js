@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function Skills() {
   return (
@@ -21,7 +22,7 @@ export default function Skills() {
         </h3>
         <div>
           <p>
-            I gain some expirience with this libraries creating the cozy snake game.
+            I gain some expirience with this libraries creating <NavLink to="/game">the cozy snake game</NavLink> and this website.
             You can play this game and view source code of it on my &nbsp;
             <a href="https://github.com/KEH9/portfolio">GitHub</a>.
           </p>
@@ -46,7 +47,7 @@ export default function Skills() {
           jQuery
         </h3>
         <div>I obtain lite experience with it. It seems for me a little bit
-          outdated in front of React, however I can work with it if it necessary.
+          outdated in front of React, however I can work with it if it is necessary.
         </div>
       </div>
 

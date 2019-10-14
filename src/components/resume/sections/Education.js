@@ -35,10 +35,10 @@ export default function Education() {
             <span className="university">
               Ural State University of Economics.
             </span>
-            <p>
-                Degree &apos;Specialist&apos; (5 years education)
-                in economics, specialization “Finance and Banking”.
-            </p>
+          </p>
+          <p>
+              Degree &apos;Specialist&apos; (5 years education)
+              in economics, specialization “Finance and Banking”.
           </p>
           <p>
             During the education was awarded the Diploma &apos;For Achievements in Scientific Researches in 1999-2000.&apos;

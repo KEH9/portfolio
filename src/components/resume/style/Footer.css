@@ -11,9 +11,8 @@
   display: block;
   width: 47.7431vw;
   height: 10.9861vw;
-  margin-top: -12vw;
-  margin-left: 39vw;
   z-index: 1000;
+  border: 3px dotted green;
 }
 
 .footer-button {
@@ -36,23 +35,24 @@
 }
 
 .footer-button-container {
-  position: relative;
-  margin-top: 20vw;
+  display: block;
+  position: absolute;
+  margin-top: 10vw;
+  margin-left: 39vw;
   z-index: 1100;
-
 }
 
 .footer-button.snake {
   float: left;
   width: 19vw;
-  margin-top: 2vw;
+  margin-top: 0vw;
   background: #fd4800;
 }
 
 .footer-button.pdf {
   float: left;
   width: 23vw;
-  margin-top: 2vw;
+  margin-top: 0vw;
   margin-left: 2vw;
   background: #000000;
 }

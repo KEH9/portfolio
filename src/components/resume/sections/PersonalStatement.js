@@ -15,7 +15,7 @@ export default function PersonalStatement() {
             I enjoying to solve complex problems and to find non-standard solutions.
             I like to create convenient products which are shows respect to time
             and resources of the users. Easily making contacts with people, some of my
-            ex-colleagues are still my close friends.
+            ex-colleagues are still my close friends. I prefer not to work for intermediaries.
           </p>
           <p>
             Looking for a visa sponsor or a distant job.

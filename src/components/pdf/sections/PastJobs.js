@@ -34,6 +34,7 @@ export default class PastJobs extends Component {
 
       <div className="past-jobs">
 
+        <div className="page-break">&nbsp;</div>
         <h1>Past Jobs</h1>
 
         <div className="paragraph">
@@ -64,7 +65,7 @@ export default class PastJobs extends Component {
               which includes soft and hardware components.
               </p>
               <p>
-              Side project: The creation of the geographic information system for internal
+              Side project: The creation of th geographic information system for internal
               use only. The purpose of the geoinformational system is to output data
               of sales and customers from “1C” (Russian Axapta) to the high-resolution
               map of the cities. The data can be displayed by different ways and colors
@@ -81,19 +82,17 @@ export default class PastJobs extends Component {
             <span className="job opened" onClick={this.toggleView.bind(this)}>
               Vitamin-Plus
             </span>
-            <span className="job-wrapper">
-              <span className="position">Position:  Specialist for the<br /> software integration</span>
-              <p>
+            <span className="position">Position:  Specialist for the software integration</span>
+            <p>
                 - 1C based software integration and improvement (integration with the front office
                 software, writing code for automatic creation of the documents, calculations,
                 printing forms, reports, etc. for a wide range of configurations);
-              </p>
+            </p>
 
-              <p>
+            <p>
                 - The shop equipment installation, adjustment and software integration
                 (trading terminals, magnetic card readers, barcode scanners etc.)
-              </p>
-            </span>
+            </p>
 
           </div>
         </div>
@@ -119,7 +118,7 @@ export default class PastJobs extends Component {
                 During this work I was awarded the silver mark of the Ministry of Finance of
                 the Republic Sakha (Yakutia) for achievements in state finance digitalization.
               </p>
-              <span className="position">Position: Specialist for the <br />software integration</span>
+              <span className="position">Position: Specialist for the software integration</span>
               <p>
                 - Setting up and integration of software system (SS) Sapphire.
                 This package is designed to automate the planning and forecasting
@@ -184,7 +183,7 @@ export default class PastJobs extends Component {
               PG «UralInvestEnergo»
             </span>
             <span className="job-wrapper">
-              <span className="position">Position: Analyst in the Finance  <br />Department</span>
+              <span className="position">Position: Analyst in the Finance Department</span>
             </span>
           </div>
         </div>

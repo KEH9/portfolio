@@ -33,7 +33,7 @@ export default function OtherITSkills() {
           <span className="special">1C</span> (Russian Axapta)
         </h3>
         <div>
-          Sertifed specialist. I used it to build or configurate accounting systems,
+          Sertifed specialist. I worked with it to build and configurate accounting systems,
           building reports, connecting it with the equipment like eltctronic balances,
           magnetic card readers, check printers, etc.
         </div>
@@ -55,7 +55,7 @@ export default function OtherITSkills() {
           SQL 2003 Administrator
         </h3>
         <div className="last">
-            No certificate, but I get full education and used it in my past job.
+            No certificate, but I get full education and woked with it in my past job.
         </div>
       </div>
 

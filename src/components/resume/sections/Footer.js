@@ -15,11 +15,9 @@ export default function Header() {
         <img src={footerSmall} alt="footer" className="footer-picture" />
       </picture>
 
-      <div className="footer-right">
-        <div className="footer-button-container">
-          <NavLink to="/game" className="footer-button snake">Cozy snake game</NavLink>
-          <div className="footer-button pdf">Download resume PDF</div>
-        </div>
+      <div className="footer-button-container">
+        <NavLink to="/game" className="footer-button snake">Cozy snake game</NavLink>
+        <div className="footer-button pdf">Download resume PDF</div>
       </div>
     </div>
 
