@@ -70,7 +70,7 @@
     margin: auto;
     font-size: 0;
     
-    border: 25px solid transparent;
+    border: solid transparent;
     -moz-border-image: url(./img/framework.png) 25 round;
     -webkit-border-image: url(./img/framework.png) 25 round; 
     -o-border-image: url(./img/framework.png) 25 round;
@@ -82,7 +82,7 @@
   .toPlay, .speedRPS, .rabbitsToWin, .difficultyLevel, .technologyStack, .github, .offerAJob {
     position: relative;
     border: 2px solid brown;
-    width: 278px;
+    width: 20.5vw;
     margin: 10px;
     font-size: 16px;
     line-height: 22px;
@@ -115,6 +115,7 @@
   .head, .body, .bodyCurve, .tail, .rabbit, .bang, .fireworks {
     position: absolute;
   }
+  
   
   .head {
     z-index: 9;
@@ -152,7 +153,7 @@
     display: block;
     position: absolute;
     height: 200px;
-    width: 700px;
+    width: 100%;
     font-family: 'slkscr';
     font-size: 100px;
     color: #2A1707;
@@ -160,18 +161,12 @@
     margin-top: 75px;
   
   }
-  
-  .message.long {
-    font-size: 65px !important;
     
-  }
-  
   .start-menu-container {
     display: inline-block;
     position: relative;
     left: 50%;
     transform: translateX(-50%); 
-    margin-top: 250px; 
   }
   
   #level {

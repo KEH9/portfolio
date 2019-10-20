@@ -12,6 +12,10 @@ import {
   setRenderArray, setRabbit, setBang, setMessage, setSpeedRPS, setChooseLevel, setFireworks,
 } from './renderState';
 
+import {
+  setScale,
+} from './other';
+
 const rootReducer = combineReducers({
   difficultyLevel,
   rabbitsToWin: setRabbitsToWin,
@@ -26,6 +30,7 @@ const rootReducer = combineReducers({
   speedRPS: setSpeedRPS,
   chooseLevel: setChooseLevel,
   fireworks: setFireworks,
+  scale: setScale,
 });
 
 export default rootReducer;

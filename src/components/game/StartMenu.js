@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 */
 
 function StartMenu(props) {
+  const style = { marginTop: `${props.scale * 10}px` };
   return (
-    <div className="start-menu-container">
+    <div className="start-menu-container" style={style}>
 
       <button
         type="button"
@@ -43,6 +44,7 @@ function StartMenu(props) {
 
 const mapStateToProps = state => ({
   difficultyLevel: state.difficultyLevel,
+  scale: state.scale,
 });
 
 export default connect(

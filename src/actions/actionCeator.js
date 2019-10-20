@@ -13,6 +13,7 @@ import {
   SET_SPEED_RPS,
   SET_CHOOSE_LEVEL,
   SET_FIREWORKS,
+  SET_SCALE,
 } from '../constants/actionTypes';
 
 
@@ -83,4 +84,9 @@ export const setChooseLevel = chooseLevel => ({
 export const setFireworks = fireworks => ({
   type: SET_FIREWORKS,
   fireworks,
+});
+
+export const setScale = scale => ({
+  type: SET_SCALE,
+  scale,
 });

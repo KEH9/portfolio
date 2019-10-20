@@ -16,3 +16,5 @@ export const SET_SPEED_RPS = 'SET_SPEED_RPS';
 
 export const SET_CHOOSE_LEVEL = 'SET_CHOOSE_LEVEL';
 export const SET_FIREWORKS = 'SET_FIREWORKS';
+
+export const SET_SCALE = 'SET_SCALE';

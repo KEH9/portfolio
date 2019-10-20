@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 // todo
 // clean old img
 
@@ -20,6 +21,7 @@ import {
   setSpeedRPS,
   setChooseLevel,
   setFireworks,
+  setScale,
 } from '../../actions/actionCeator';
 
 import './Game.css';
@@ -77,6 +79,23 @@ class Game extends Component {
     this.gameIn = false;
     this.timerId = '';
 
+    const docWidth = document.getElementsByTagName('body')[0].clientWidth;
+    if (docWidth <= 1024) {
+      this.scale = 20;
+    } else if (docWidth <= 1400) {
+      this.scale = 25;
+    } else if (docWidth <= 1600) {
+      this.scale = 30;
+    } else {
+      this.scale = 35;
+    }
+    this.props.setScale(this.scale);
+
+    this.boardElement = document.getElementsByClassName('board')[0];
+    this.boardElement.style.height = `${20 * this.scale}px`;
+    this.boardElement.style.width = `${28 * this.scale}px`;
+    this.boardElement.style.borderWidth = `${this.scale}px`;
+
     this.setDefaultProps();
     this.welcome();
     this.soundInit();
@@ -132,35 +151,35 @@ class Game extends Component {
     this.snakeLogicArray = [
       {
         piece: 'head',
-        x: 125,
+        x: (5 * this.scale),
         y: 0,
         direction: 'left',
         pic: head,
       },
       {
         piece: 'body',
-        x: 100,
+        x: (4 * this.scale),
         y: 0,
         direction: 'left',
         pic: body,
       },
       {
         piece: 'body',
-        x: 75,
+        x: (3 * this.scale),
         y: 0,
         direction: 'left',
         pic: body,
       },
       {
         piece: 'body',
-        x: 50,
+        x: (2 * this.scale),
         y: 0,
         direction: 'left',
         pic: body,
       },
       {
         piece: 'tail',
-        x: 25,
+        x: (1 * this.scale),
         y: 0,
         direction: 'left',
         pic: tail,
@@ -184,7 +203,6 @@ class Game extends Component {
     this.gamePaused = false;
     this.gameIn = true;
     this.ticId = '';
-
 
     this.ticGenerator();
     this.createRenderSnakeArray();
@@ -232,11 +250,11 @@ class Game extends Component {
       this.props.setSpeedStep(1);
       this.props.setWinCondition(100);
     } else if (this.props.difficultyLevel === veteran) {
-      this.props.setRabbitsToWin(120);
+      this.props.setRabbitsToWin(1);
       this.props.setCurrentSpeed(150);
       this.props.setSpeedLimit(120);
       this.props.setSpeedStep(1);
-      this.props.setWinCondition(120);
+      this.props.setWinCondition(1);
     }
     this.props.increaseDifficultyLevel();
   }
@@ -277,7 +295,7 @@ class Game extends Component {
       this.increaseDifficultyLevel();
     }
 
-    if (( // bufferization of the key pressed if one keypress was already done this tic
+    if (( // bufferization of the key pressed if one keypress was already done in this tic
       key === 37
       || key === 38
       || key === 39
@@ -394,7 +412,12 @@ class Game extends Component {
 
   // welcome menu (game just loaded)
   welcome() {
-    this.props.setMessage(<div className="message long">WELCOME TO<br />COZY SNAKE GAME!</div>);
+    const style = { fontSize: `${this.scale * 2.5}px` };
+    this.props.setMessage(
+      <div className="message" style={style}>
+        WELCOME TO<br />COZY SNAKE GAME!
+      </div>,
+    );
     this.props.setChooseLevel(this.startMenu);
   }
 
@@ -403,7 +426,8 @@ class Game extends Component {
     if (!this.gamePaused) {
       this.gamePaused = !this.gamePaused;
       this.stopTic();
-      this.props.setMessage(<div className="message">GAME PAUSED</div>);
+      const style = { fontSize: `${this.scale * 5}px` };
+      this.props.setMessage(<div className="message" style={style}>GAME PAUSED</div>);
     } else {
       this.gamePaused = !this.gamePaused;
       this.props.setMessage('');
@@ -415,7 +439,8 @@ class Game extends Component {
   gameOver() {
     this.gameIn = false;
     this.removeGame();
-    this.props.setMessage(<div className="message">GAME OVER</div>);
+    const style = { fontSize: `${this.scale * 4}px` };
+    this.props.setMessage(<div className="message" style={style}>GAME OVER</div>);
     this.props.setChooseLevel(this.startMenu);
   }
 
@@ -425,19 +450,20 @@ class Game extends Component {
     this.removeGame();
     if (this.soundIsOn) new Audio(yuhuu).play();
 
-    const style = { left: `${156}px`, top: `${125}px` };
+    const styleFireworks = { height: `${this.scale * 20}px`, width: `${this.scale * 28}px` };
     this.props.setFireworks(
       <img
         src={fireworksIMG}
         alt=""
         className="fireworks"
-        style={style}
+        style={styleFireworks}
       />,
     );
 
     this.timeoutId = setTimeout(() => {
       this.props.setFireworks('');
-      this.props.setMessage(<div className="message long">CONGRATULATIONS! you win!</div>);
+      const style = { fontSize: `${this.scale * 2.5}px` };
+      this.props.setMessage(<div className="message" style={style}>CONGRATULATIONS! you win!</div>);
       this.props.setChooseLevel(this.startMenu);
     }, 2500);
   }
@@ -493,7 +519,7 @@ class Game extends Component {
     }
 
     if (typeOfCheck === 'borderCollision') {
-      if (x >= (28 * 25) || y >= (20 * 25) || x <= -1 || y <= -1) {
+      if (x >= (28 * this.scale) || y >= (20 * this.scale) || x <= -1 || y <= -1) {
         return true;
       }
       return false;
@@ -507,22 +533,22 @@ class Game extends Component {
 
     switch (this.nextMoveConnection) {
       case 'left':
-        this.snakeLogicArray[0].x = this.snakeLogicArray[0].x + 25;
+        this.snakeLogicArray[0].x = this.snakeLogicArray[0].x + this.scale;
         this.snakeLogicArray[0].direction = 'left';
         break;
 
       case 'right':
-        this.snakeLogicArray[0].x = this.snakeLogicArray[0].x - 25;
+        this.snakeLogicArray[0].x = this.snakeLogicArray[0].x - this.scale;
         this.snakeLogicArray[0].direction = 'right';
         break;
 
       case 'up':
-        this.snakeLogicArray[0].y = this.snakeLogicArray[0].y + 25;
+        this.snakeLogicArray[0].y = this.snakeLogicArray[0].y + this.scale;
         this.snakeLogicArray[0].direction = 'up';
         break;
 
       case 'down':
-        this.snakeLogicArray[0].y = this.snakeLogicArray[0].y - 25;
+        this.snakeLogicArray[0].y = this.snakeLogicArray[0].y - this.scale;
         this.snakeLogicArray[0].direction = 'down';
         break;
 
@@ -613,19 +639,18 @@ class Game extends Component {
 
   // adding new rabbit to game field
   addRabbit() {
-    let x; let y; let
-      checkResult;
+    let x; let y; let checkResult;
 
     do {
-      x = randomInt(0, 27) * 25;
-      y = randomInt(0, 19) * 25;
+      x = randomInt(0, 27) * this.scale;
+      y = randomInt(0, 19) * this.scale;
       checkResult = this.checkSnakeCoordinates(x, y, 'wholeSnake');
     } while (!checkResult);
 
     this.rabbitX = x;
     this.rabbitY = y;
 
-    const style = { left: `${x}px`, top: `${y}px` };
+    const style = { left: `${x}px`, top: `${y}px`, height: `${this.scale}px` };
 
     this.props.setRabbit(
       <img
@@ -655,6 +680,18 @@ class Game extends Component {
       );
     }
     this.props.setRenderArray(newRenderArray);
+
+    // setting up sizes of images for snake
+    this.headElement = document.getElementsByClassName('head')[0];
+    if (this.headElement) {
+      this.headElement.style.height = `${this.scale}px`;
+      this.bodyElements = document.getElementsByClassName('body');
+      for (let i = 0; i < this.bodyElements.length; i++) {
+        this.bodyElements[i].style.height = `${this.scale}px`;
+      }
+      this.tailElement = document.getElementsByClassName('tail')[0];
+      this.tailElement.style.height = `${this.scale}px`;
+    }
   }
 
   // initiating sound icon
@@ -796,6 +833,7 @@ const mapStateToProps = state => ({
   speedRPS: state.speedRPS,
   chooseLevel: state.chooseLevel,
   fireworks: state.fireworks,
+  scale: state.scale,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -813,6 +851,7 @@ const mapDispatchToProps = dispatch => ({
   setSpeedRPS: (speedRPS) => { dispatch(setSpeedRPS(speedRPS)); },
   setChooseLevel: (chooseLevel) => { dispatch(setChooseLevel(chooseLevel)); },
   setFireworks: (fireworks) => { dispatch(setFireworks(fireworks)); },
+  setScale: (scale) => { dispatch(setScale(scale)); },
 });
 
 export default connect(
