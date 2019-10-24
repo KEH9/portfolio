@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 import {
@@ -86,8 +87,10 @@ class Game extends Component {
       this.scale = 25;
     } else if (docWidth <= 1600) {
       this.scale = 30;
-    } else {
+    } else if (docWidth <= 2500) {
       this.scale = 35;
+    } else {
+      this.scale = 45;
     }
     this.props.setScale(this.scale);
 
@@ -250,11 +253,11 @@ class Game extends Component {
       this.props.setSpeedStep(1);
       this.props.setWinCondition(100);
     } else if (this.props.difficultyLevel === veteran) {
-      this.props.setRabbitsToWin(1);
+      this.props.setRabbitsToWin(140);
       this.props.setCurrentSpeed(150);
       this.props.setSpeedLimit(120);
       this.props.setSpeedStep(1);
-      this.props.setWinCondition(1);
+      this.props.setWinCondition(140);
     }
     this.props.increaseDifficultyLevel();
   }
@@ -786,12 +789,12 @@ class Game extends Component {
           </div>
 
           <div className="technologyStack">
-            Technology stack for this game: React.js, javascript (ES6), css, html
+            Technology stack for this game: React.js, Redux, javascript (ES6), css, html
           </div>
           <div className="github">
             You can get the source code of this game at my
             <span className="info"> <a href="https://github.com/KEH9">github</a></span>
-            account
+            &nbsp;account
           </div>
 
           <div className="offerAJob">
@@ -799,13 +802,10 @@ class Game extends Component {
             <br />
             <span className="info">offer me a job</span>
             <br />
-            you can download my
-            <span className="info"> <a href="innokentiy-kuznetsov.doc">resume </a></span>
-            , call me
-            <span className="info">+79089164787</span>
-            . WhatsApp, Viber, Telegram and Skype are also available at this number.
-            Also you can mail to
-            <a href="mailto:innokkuz@protonmail.com">innokkuz@protonmail.com</a>
+            visit my&nbsp;
+            <span className="info"><NavLink to="/resume">website</NavLink></span>
+
+
           </div>
 
         </div>

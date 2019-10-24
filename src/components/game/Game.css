@@ -20,25 +20,10 @@
   
   a:visited {
     color: #2A1707;
-  }
-  
-  .nav {
-    height: 30px;
-    width: 25px;
-    background: linear-gradient(to top, peachpuff, peachpuff, white); 
-    background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
-    border-radius: 5px;
-    border: 2px solid #2A1707;
-    margin: 10px;
-    font-family: 'slkscr';
-    color: #2A1707;
-  }
-  
+  }  
 
   .leftColumn {
-  
     position: relative;
-  
     float: left;
     height: 99vh;
     width: calc(100% - 315px);
@@ -53,8 +38,8 @@
   
   .container {
     overflow: hidden;
-    height: 97vh;
-    width: 99.8%;
+    height: 100vh;
+    width: 100%;
     background: 
     repeating-linear-gradient(rgb(193, 156, 123, .3), rgb(193, 156, 123, .3) 25px, transparent 25px, transparent 50px),
     repeating-linear-gradient( 90deg, rgb(193, 156, 123, .3), rgb(193, 156, 123, .3) 25px, transparent 25px, transparent 50px);
@@ -65,8 +50,6 @@
   .board {
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;  
-    height: 500px;
-    width: 700px;
     margin: auto;
     font-size: 0;
     
@@ -81,29 +64,31 @@
   
   .toPlay, .speedRPS, .rabbitsToWin, .difficultyLevel, .technologyStack, .github, .offerAJob {
     position: relative;
-    border: 2px solid brown;
     width: 20.5vw;
-    margin: 10px;
-    font-size: 16px;
-    line-height: 22px;
+    margin: 0.7321vw;
+    padding: 0.15vw;
+    font-size: 1.1713vw;
+    line-height: 1.7vw;
+    border-radius: 0.366vw;
+    border: 0.15vw solid #2A1707;
   
   }
   
   .info {
-    font-size: 22px;
+    font-size: 1.6105vw;
     font-weight: bold;
     color: #E45C00;
   }
   
   .sound {
     position: absolute;
-    height: 50px;
-    width: 50px;
-    border: 2px solid brown;
-    top: 15px;
-    right: 15px;
-    border-radius: 5px;
-    border: 2px solid #2A1707;
+    height: 3.6603vw;
+    width: 3.6603vw;
+    border: 0.15vw solid brown;
+    top: 1.0981vw;
+    right: 1.0981vw;
+    border-radius: 0.366vw;
+    border: 0.15vw solid #2A1707;
   
   }
   
@@ -158,7 +143,7 @@
     font-size: 100px;
     color: #2A1707;
     text-align: center;
-    margin-top: 75px;
+    margin-top: 3.4905vw;
   
   }
     
@@ -171,29 +156,29 @@
   
   #level {
     position: relative;
-    height: 30px;
-    width: 150px;
-    margin: 10px;
+    height: 2.1962vw;
+    width: 10.981vw;
+    margin: 0.7321vw;
     background: linear-gradient(to top, peachpuff, peachpuff, white); 
     background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
     border-radius: 5px;
-    border: 2px solid #2A1707;
+    border: 0.15vw solid #2A1707;
     text-align: center;
-    line-height: 30px;
+    line-height: 2.1962vw;
     font-family: 'slkscr';
-    font-size: 20px;
+    font-size: 1.4641vw;
     color: #2A1707;
   
   }
   
   #leveldown, #levelup {
-    height: 30px;
-    width: 25px;
+    height: 2.1962vw;
+    width: 1.8302vw;
     background: linear-gradient(to top, peachpuff, peachpuff, white); 
     background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
-    border-radius: 5px;
-    border: 2px solid #2A1707;
-    margin: 10px;
+    border-radius: 0.366vw;
+    border: 0.15vw solid #2A1707;
+    margin: 0.7321vw;
     font-family: 'slkscr';
     color: #2A1707;
   
@@ -208,17 +193,17 @@
   #startButton {
     display: block;
     position: relative;
-    height: 32px;
-    width: 245px;
-    margin: 10px;
+    height: 2.3426vw;
+    width: 17.9356vw;
+    margin: 0.7321vw;
     background: linear-gradient(to top, peachpuff, peachpuff, white); 
     background: -webkit-linear-gradient(bottom, peachpuff, peachpuff, white); 
-    border-radius: 5px;
-    border: 2px solid #2A1707;
+    border-radius: 0.366vw;
+    border: 0.15vw solid #2A1707;
     text-align: center;
-    line-height: 30px;
+    line-height: 2.1962vw;
     font-family: 'slkscr';
-    font-size: 20px;
+    font-size: 1.4641vw;
     color: #2A1707;
   
   }
