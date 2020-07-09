@@ -11,7 +11,7 @@ export default function Contacts() {
         <div className="last solo">
           <p>
             <span className="special">Phone:&nbsp;</span> <a href="tel:+79089164787">+79089164787</a>.
-            <span className="special">WhatsApp, Viber, Telegram and Skype</span> are also
+            <span className="special"> <a href="https://wa.me/79089164787">WhatsApp</a>, Viber, Telegram and Skype</span> are also
             available at this number
           </p>
 
