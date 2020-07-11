@@ -20,17 +20,17 @@ export default function Header() {
       <div className="header-left">
 
         <img src={myPhoto} alt="me" className="my-photo" />
-        <div className="personal-info first">+79089164787</div>
-        <div className="personal-info">innokkuz@mail.com</div>
-        <div className="personal-info">facebook</div>
-        <div className="personal-info last-info">github</div>
+        <div className="personal-info first"><a href="tel:+79089164787">+79089164787</a></div>
+        <div className="personal-info"><a href="mailto:innokkuz@protonmail.com">send e-mail</a></div>
+        <div className="personal-info"><a href="https://www.facebook.com/innokentiy.kuznetsov.12">facebook</a></div>
+        <div className="personal-info last-info"><a href="https://github.com/KEH9/">github</a></div>
 
       </div>
 
 
       <div className="header-right">
         <div className="innokentiy-kuznetsov">Innokentiy Kuznetsov</div>
-        <div className="frontend">Front-end software developer</div>
+        <div className="frontend">Web software developer</div>
         <div className="header-button-container">
           <NavLink to="/game" className="header-button snake">Cozy snake game</NavLink>
           <div className="header-button pdf">Download resume PDF</div>

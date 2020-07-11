@@ -21,6 +21,18 @@ export default function Contacts() {
           </p>
 
           <p>
+            <span className="special"><a href="https://github.com/KEH9">GitHub</a></span>
+          </p>
+
+          <p>
+            <span className="special">
+              <a href="https://stackoverflow.com/users/10592345/keh9">
+                stackoverflow
+              </a>
+            </span>
+          </p>
+
+          <p>
             <span className="special">Social networks:</span>
           </p>
           <p>

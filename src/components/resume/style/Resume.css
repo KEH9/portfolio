@@ -232,3 +232,8 @@ span.closed::after {
   height: 2.7778vw;
   top: 0.8vw;
 }
+
+.anchor {
+  text-decoration: underline;
+  cursor: pointer;
+}

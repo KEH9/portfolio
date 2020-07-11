@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import simpleParallax from 'simple-parallax-js';
 
 import Header from './sections/Header';
+import PersonalInfo from './sections/PersonalInfo';
 import Skills from './sections/Skills';
 import OtherITSkills from './sections/OtherItSkills';
 import PastJobs from './sections/PastJobs';
@@ -31,18 +32,6 @@ class Resume extends Component {
       scale: 1.6,
       overfow: true,
     });
-
-    // calculating height of the left panel
-    const lastHeaderElement = document.getElementsByClassName('last-info')[0];
-    const LastInfoBottom = lastHeaderElement.getBoundingClientRect().bottom;
-    const headerLeftElement = document.getElementsByClassName('header-left')[0];
-    const headerLeftTop = headerLeftElement.getBoundingClientRect().top;
-    const headerLeftLeft = headerLeftElement.getBoundingClientRect().left;
-    const headerLeftRight = headerLeftElement.getBoundingClientRect().right;
-    const headerLeftWidth = headerLeftRight - headerLeftLeft;
-    const headerLeftHeight = headerLeftWidth * 1.476489028213166; // 1.476 is my photo raito
-
-    headerLeftElement.style.height = `${headerLeftHeight + LastInfoBottom - headerLeftTop}px`;
   }
 
 
@@ -54,6 +43,7 @@ class Resume extends Component {
         <Header />
 
         <div className="resume-right">
+          <PersonalInfo />
           <Skills />
           <OtherITSkills />
           <PastJobs />

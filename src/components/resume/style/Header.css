@@ -9,7 +9,6 @@
   position: fixed;
   float: left;
   width: 18vw;
-  height: 95vh;
   top: 2vh;
   margin-left: 10.5vw;
   background-color: #fd4800;
@@ -22,12 +21,10 @@
 }
 
 .personal-info {
-  display: flex;
-  align-items: flex-end;
   margin: 0 auto;
-  padding-bottom: 0.5vw;
+  padding-bottom: 0.2vw;
+  padding-top: 0.5vw;
   width: 15.55555vw;
-  height: 3.7vw;
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1.8056vw;
   font-weight: 500;
@@ -37,7 +34,11 @@
   letter-spacing: normal;
   color: #ffffff;
   border-bottom: 0.06944vw solid #FD9166;
+}
 
+.personal-info a:link, .personal-info a:visited, .personal-info a:active{
+  text-decoration: none;
+  color: #fff;
 }
 
 .personal-info.first {
@@ -50,6 +51,7 @@
 
 .personal-info.last-info {
   border-bottom: 0;
+  padding-bottom: 1.5vw;
 }
 
 .header-button {
@@ -100,7 +102,7 @@
   float: left;
   display: block;
   width: 47.7431vw;
-  height: 62.9861vw;
+  height: 100vh;
   margin-top: -100vh;
   margin-left: 39vw;
   z-index: 1000;

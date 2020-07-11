@@ -10,7 +10,7 @@ export default function Hobbies() {
         <div className="last solo">
           <p>
             Board games, meditation, singing, dancing, popular science in history,
-            anthropology, philosophy, biology, chemistry etc, DIY, home distillery.
+            anthropology, philosophy, biology, chemistry etc, DIY, home distillery and many other.
           </p>
 
         </div>
