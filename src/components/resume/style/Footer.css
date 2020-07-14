@@ -44,15 +44,16 @@
 
 .footer-button.snake {
   float: left;
-  width: 19vw;
+  width: 16.5vw;
   margin-top: 0vw;
   background: #fd4800;
 }
 
-.footer-button.pdf {
+.footer-button.pdf, .footer-button.odt {
   float: left;
-  width: 23vw;
+  width: 12.5vw;
   margin-top: 0vw;
   margin-left: 2vw;
   background: #000000;
 }
+

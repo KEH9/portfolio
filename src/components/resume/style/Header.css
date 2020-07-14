@@ -73,29 +73,31 @@
 
 }
 
-.header-button.contacts {
-  width: 18vw;
-  margin-top: 2vw;
-}
-
 .header-button-container {
   margin-top: 20vh;
+  background-color: blue;
 }
 
 .header-button.snake {
   float: left;
-  width: 19vw;
+  width: 16.5vw;
   margin-top: 2vw;
   background: #fd4800;
 }
 
-.header-button.pdf {
+.header-button.pdf, .header-button.odt {
   float: left;
-  width: 23vw;
+  width: 12.5vw;
   margin-top: 2vw;
   margin-left: 2vw;
   background: #000000;
 }
+
+a.pdf:link, a.pdf:visited, a.pdf:active, a.odt:link, a.odt:visited, a.odt:active {
+  text-decoration: none;
+  color: #fff;
+}
+
 
 .header-right {
   position: absolute;  

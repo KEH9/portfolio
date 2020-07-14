@@ -17,7 +17,15 @@ export default function Header() {
 
       <div className="footer-button-container">
         <NavLink to="/game" className="footer-button snake">Cozy snake game</NavLink>
-        <div className="footer-button pdf">Download resume PDF</div>
+
+        <a className="footer-button pdf" href="http://localhost:3000/resume.pdf" download>
+            Resume PDF
+        </a>
+
+        <a className="footer-button odt" href="http://localhost:3000/resume.odt" download>
+            Resume ODT
+        </a>
+
       </div>
     </div>
 

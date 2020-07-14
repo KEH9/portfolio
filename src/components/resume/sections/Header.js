@@ -32,8 +32,17 @@ export default function Header() {
         <div className="innokentiy-kuznetsov">Innokentiy Kuznetsov</div>
         <div className="frontend">Web software developer</div>
         <div className="header-button-container">
+
           <NavLink to="/game" className="header-button snake">Cozy snake game</NavLink>
-          <div className="header-button pdf">Download resume PDF</div>
+
+          <a className="header-button pdf" href="http://localhost:3000/resume.pdf" download>
+            Resume PDF
+          </a>
+
+          <a className="header-button odt" href="http://localhost:3000/resume.odt" download>
+            Resume ODT
+          </a>
+
         </div>
       </div>
     </div>
