@@ -36,5 +36,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "redux-devtools": "^3.5.0"
-  }
+  },
+  "homepage" : "http://localhost:3001/"
 }
