@@ -1,8 +1,7 @@
-// todo master
 
 import React from 'react';
 import {
-  BrowserRouter, Route, Switch, Redirect,
+  BrowserRouter, Route, Switch,
 } from 'react-router-dom';
 
 import './App.css';
@@ -18,7 +17,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={Resume} />
         <Route path="/game" component={Game} />
-        <Redirect from="*" to="/" />
       </Switch>
     </BrowserRouter>
 
