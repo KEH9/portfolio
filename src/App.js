@@ -2,11 +2,7 @@
 
 import React from 'react';
 import {
-<<<<<<< HEAD
-  HashRouter, Route, Switch,
-=======
-  BrowserRouter, Route, Switch, Redirect,
->>>>>>> parent of f1cacc2c... s c
+  HashRouter, Route, Switch, Redirect,
 } from 'react-router-dom';
 
 import './App.css';
