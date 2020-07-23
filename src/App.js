@@ -1,7 +1,12 @@
+// todo master
 
 import React from 'react';
 import {
+<<<<<<< HEAD
   HashRouter, Route, Switch,
+=======
+  BrowserRouter, Route, Switch, Redirect,
+>>>>>>> parent of f1cacc2c... s c
 } from 'react-router-dom';
 
 import './App.css';
@@ -18,6 +23,7 @@ function App() {
         <Route exact path="/" component={Resume} />
         <Route path="/portfolio" component={Resume} />
         <Route path="/game" component={Game} />
+        <Redirect from="*" to="/" />
       </Switch>
     </HashRouter>
 
