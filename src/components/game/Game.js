@@ -80,8 +80,15 @@ class Game extends Component {
     this.gameIn = false;
     this.timerId = '';
 
+    // setting scale of the game board (in pixels)
     const docWidth = document.getElementsByTagName('body')[0].clientWidth;
-    if (docWidth <= 1024) {
+    const docHeight = document.getElementsByTagName('body')[0].clientHeight;
+    this.docWidth = docWidth;
+    this.docHeight = docHeight;
+
+    if (docWidth <= 770) {
+      this.scale = 15;
+    } else if (docWidth <= 1024) {
       this.scale = 20;
     } else if (docWidth <= 1400) {
       this.scale = 25;
@@ -770,6 +777,10 @@ class Game extends Component {
         <div
           className="rightColumn"
         >
+
+          <div className="toPlay">Width {this.docWidth}</div>
+          <div className="toPlay">Height {this.docHeight}</div>
+
           <div className="toPlay">To play the game use cursor keys or aswd keys and space</div>
           <div className="difficultyLevel">
             Your difficulty level is
