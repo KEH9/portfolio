@@ -1,9 +1,9 @@
 {
-  "main.css": "/static/css/main.882495aa.chunk.css",
-  "main.js": "/static/js/main.fe3483ce.chunk.js",
-  "main.js.map": "/static/js/main.fe3483ce.chunk.js.map",
-  "static/js/1.bbf39045.chunk.js": "/static/js/1.bbf39045.chunk.js",
-  "static/js/1.bbf39045.chunk.js.map": "/static/js/1.bbf39045.chunk.js.map",
+  "main.css": "/static/css/main.f5995bb0.chunk.css",
+  "main.js": "/static/js/main.ccb0d632.chunk.js",
+  "main.js.map": "/static/js/main.ccb0d632.chunk.js.map",
+  "static/js/1.ad802cdb.chunk.js": "/static/js/1.ad802cdb.chunk.js",
+  "static/js/1.ad802cdb.chunk.js.map": "/static/js/1.ad802cdb.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/bang.gif": "/static/media/bang.e5d0888a.gif",
@@ -22,8 +22,8 @@
   "static/media/footer@3x.jpg": "/static/media/footer@3x.6a455866.jpg",
   "static/media/Game.css": "/static/media/slkscr.2761fd10.ttf",
   "static/media/Resume.css": "/static/media/combined-shape.a0a9dfee.png",
-  "static/css/main.882495aa.chunk.css.map": "/static/css/main.882495aa.chunk.css.map",
+  "static/css/main.f5995bb0.chunk.css.map": "/static/css/main.f5995bb0.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.fc420a4140a3cefe467ff8b597cf25ab.js": "/precache-manifest.fc420a4140a3cefe467ff8b597cf25ab.js",
+  "precache-manifest.522a035bc2e792b0b9bd23a945df356a.js": "/precache-manifest.522a035bc2e792b0b9bd23a945df356a.js",
   "service-worker.js": "/service-worker.js"
 }
