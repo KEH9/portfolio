@@ -1,10 +1,8 @@
 /* eslint-disable prefer-destructuring */
-// todo
-// clean old img
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { isMobileOnly } from 'react-device-detect';
 
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 import {
@@ -111,6 +109,17 @@ class Game extends Component {
     this.soundInit();
     this.keyDownFunction = (e) => { this.keyPressHandler(e); };
     window.addEventListener('keydown', this.keyDownFunction, false);
+
+    // show "mobile" if mobie device
+    if (isMobileOnly) {
+      document.getElementsByClassName('soon')[0].classList.remove('none');
+      document.getElementsByClassName('leftColumn')[0].classList.add('none');
+      document.getElementsByClassName('rightColumn')[0].classList.add('none');
+    } else {
+      document.getElementsByClassName('soon')[0].classList.add('none');
+      document.getElementsByClassName('leftColumn')[0].classList.remove('none');
+      document.getElementsByClassName('rightColumn')[0].classList.remove('none');
+    }
   }
 
 
@@ -753,6 +762,10 @@ class Game extends Component {
         className="container"
       >
 
+        <div className="soon none">
+          Mobile version comming soon...
+        </div>
+
         <div
           className="leftColumn"
         >
@@ -777,10 +790,6 @@ class Game extends Component {
         <div
           className="rightColumn"
         >
-
-          <div className="toPlay">Width {this.docWidth}</div>
-          <div className="toPlay">Height {this.docHeight}</div>
-
           <div className="toPlay">To play the game use cursor keys or aswd keys and space</div>
           <div className="difficultyLevel">
             Your difficulty level is

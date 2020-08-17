@@ -6,7 +6,7 @@
   body {
     font-family: 'slkscr';
   }
-  
+
   img {
     display: inline-block;
     font-size: 0;
@@ -21,6 +21,10 @@
   a:visited {
     color: #2A1707;
   }  
+
+  .none {
+    display: none;
+  }
 
   .leftColumn {
     position: relative;
