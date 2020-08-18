@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { isMobileOnly } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 import { newbie, veteran, ace } from '../../constants/difficultyLevels';
 import {
@@ -111,7 +111,7 @@ class Game extends Component {
     window.addEventListener('keydown', this.keyDownFunction, false);
 
     // show "mobile" if mobie device
-    if (isMobileOnly) {
+    if (isMobile) {
       document.getElementsByClassName('soon')[0].classList.remove('none');
       document.getElementsByClassName('leftColumn')[0].classList.add('none');
       document.getElementsByClassName('rightColumn')[0].classList.add('none');
