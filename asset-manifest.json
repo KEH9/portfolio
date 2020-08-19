@@ -1,9 +1,9 @@
 {
-  "main.css": "/static/css/main.a18e7246.chunk.css",
-  "main.js": "/static/js/main.2f9c0d1e.chunk.js",
-  "main.js.map": "/static/js/main.2f9c0d1e.chunk.js.map",
-  "static/js/1.ad802cdb.chunk.js": "/static/js/1.ad802cdb.chunk.js",
-  "static/js/1.ad802cdb.chunk.js.map": "/static/js/1.ad802cdb.chunk.js.map",
+  "main.css": "/static/css/main.8b732adb.chunk.css",
+  "main.js": "/static/js/main.d3d638d3.chunk.js",
+  "main.js.map": "/static/js/main.d3d638d3.chunk.js.map",
+  "static/js/1.6104ee12.chunk.js": "/static/js/1.6104ee12.chunk.js",
+  "static/js/1.6104ee12.chunk.js.map": "/static/js/1.6104ee12.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/bang.gif": "/static/media/bang.e5d0888a.gif",
@@ -15,6 +15,7 @@
   "static/media/header@2x.jpg": "/static/media/header@2x.11397dd5.jpg",
   "static/media/header@3x.jpg": "/static/media/header@3x.54267d6e.jpg",
   "static/media/face.png": "/static/media/face.bf02499c.png",
+  "static/media/face-square.png": "/static/media/face-square.a38cdb42.png",
   "static/media/cambridge.jpg": "/static/media/cambridge.9c696d6b.jpg",
   "static/media/urgeu.jpg": "/static/media/urgeu.9e6b79b7.jpg",
   "static/media/footer.jpg": "/static/media/footer.53412f8d.jpg",
@@ -22,8 +23,8 @@
   "static/media/footer@3x.jpg": "/static/media/footer@3x.6a455866.jpg",
   "static/media/Game.css": "/static/media/slkscr.2761fd10.ttf",
   "static/media/Resume.css": "/static/media/combined-shape.a0a9dfee.png",
-  "static/css/main.a18e7246.chunk.css.map": "/static/css/main.a18e7246.chunk.css.map",
+  "static/css/main.8b732adb.chunk.css.map": "/static/css/main.8b732adb.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.e6686fccdd7520b474082acec4b3b896.js": "/precache-manifest.e6686fccdd7520b474082acec4b3b896.js",
+  "precache-manifest.049b02fd61ae89bbc9e1b810c97b8c47.js": "/precache-manifest.049b02fd61ae89bbc9e1b810c97b8c47.js",
   "service-worker.js": "/service-worker.js"
 }
