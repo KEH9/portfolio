@@ -1,0 +1,40 @@
+.my-photo-mobile {
+  margin-left: 30%;
+  width: 40%;
+  margin-top: 1vw;
+}
+
+.innokentiy-kuznetsov-mobile {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  -webkit-text-stroke: 0.2083vw #fd4800;
+  font-family: 'Roboto Black', Arial, sans-serif;
+  font-size: 6vw;
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.93;
+  letter-spacing: 0.1806vw;
+  color: rgba(255, 255, 255, 0);
+  margin-top: 3vw;
+}
+
+.frontend-mobile {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 1vw;
+  font-family: 'Roboto Black', Arial, sans-serif;
+  font-size: 5vw;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: #fd4800;
+}
+
+
