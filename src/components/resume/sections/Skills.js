@@ -10,7 +10,7 @@ export default function Skills() {
       <div className="paragraph">
         <h3>HTML5, CSS3, JavaScript</h3>
         <div>
-          Including ES6, regular explanations, ShadowDOM, AJAX, design patterns etc.
+          Including ES2020, regular explanations, ShadowDOM, AJAX, design patterns etc.
           Feel confident with it. Can format code following Google JavaScript
           style guide or Air BnB rules.
         </div>
@@ -22,12 +22,13 @@ export default function Skills() {
         </h3>
         <div>
           <p>
-            I gain some expirience with this libraries creating <NavLink to="/game">the cozy snake game</NavLink> and this website.
-            You can play this game and view source code of it on my &nbsp;
+            I gain some expirience with this libraries creating&nbsp;
+            <NavLink to="/game">the cozy snake game</NavLink>&nbsp;and this website.
+            You can <NavLink to="/game">play</NavLink> this game or view source code of it on my &nbsp;
             <a href="https://github.com/KEH9/portfolio">GitHub</a>.
           </p>
           <p>
-            Additional libraries: Router v.4, bindActionCreators.
+            Additional libraries: Router v.4, react-device-detect and many other.
           </p>
         </div>
       </div>
@@ -46,8 +47,8 @@ export default function Skills() {
         <h3>
           jQuery
         </h3>
-        <div>I obtain lite experience with it. It seems for me a little bit
-          outdated in front of React, however I can work with it if it is necessary.
+        <div>I obtained the lite experience with it. It seems for me a little bit
+          redundant, however I can work with it if it is necessary.
         </div>
       </div>
 
@@ -71,11 +72,7 @@ export default function Skills() {
           You can see it&apos;s sourse code my&nbsp;
           <a href="https://github.com/KEH9/Node_mySQL_Project">
             GitHub
-          </a>
-          &nbsp;and try it&nbsp;
-          <a href="https://github.com/KEH9/Node_mySQL_Project">
-          here.
-          </a>
+          </a>.
         </div>
       </div>
 
@@ -85,7 +82,7 @@ export default function Skills() {
           MongoDB
         </h3>
         <div>
-          I get only a little expirience with mongoose library on Node.js server.
+        I get only a little expirience with it in combination with mongoose library on Node.js server.
         </div>
       </div>
 
