@@ -39,7 +39,7 @@
     position: relative;
     float: left;
     height: 99vh;
-    width: calc(100% - 315px);
+    width: 78vw;
   }
     
   .container {

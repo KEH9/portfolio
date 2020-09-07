@@ -50,22 +50,6 @@ import yuhuu from './sound/yuhuu.mp3';
 
 class Game extends Component {
   componentDidMount() {
-    // preloading pictures
-    const picturesToPreload = [
-      './img/snake-head-bottom.png',
-      './img/snake-body-up-down.png',
-      './img/snake-turn-left-bottom.png',
-      './img/snake-tail-up.png',
-      './img/snake-tail-down.png',
-      './img/rabbit.png',
-      './img/bang.gif',
-      './img/fireworks.gif',
-    ];
-    picturesToPreload.forEach((picture) => {
-      const img = new Image();
-      img.src = picture;
-    });
-
     document.title = 'Cozy snake';
 
     this.startMenu = (
