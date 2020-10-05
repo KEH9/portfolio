@@ -35,8 +35,8 @@ export default function Header() {
 
           <NavLink to="/game" className="header-button snake">Cozy snake game</NavLink>
 
-          <a className="header-button pdf" href="resume.pdf" download>
-            Resume PDF
+          <a className="header-button doc" href="resume.doc" download>
+            Resume DOC
           </a>
 
           <a className="header-button odt" href="resume.odt" download>
