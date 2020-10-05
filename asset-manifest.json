@@ -1,7 +1,7 @@
 {
-  "main.css": "/static/css/main.82c92330.chunk.css",
-  "main.js": "/static/js/main.eca10281.chunk.js",
-  "main.js.map": "/static/js/main.eca10281.chunk.js.map",
+  "main.css": "/static/css/main.7827e1f0.chunk.css",
+  "main.js": "/static/js/main.2747d813.chunk.js",
+  "main.js.map": "/static/js/main.2747d813.chunk.js.map",
   "static/js/1.ef61819f.chunk.js": "/static/js/1.ef61819f.chunk.js",
   "static/js/1.ef61819f.chunk.js.map": "/static/js/1.ef61819f.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
@@ -23,8 +23,8 @@
   "static/media/footer@3x.jpg": "/static/media/footer@3x.6a455866.jpg",
   "static/media/Game.css": "/static/media/slkscr.2761fd10.ttf",
   "static/media/Resume.css": "/static/media/combined-shape.a0a9dfee.png",
-  "static/css/main.82c92330.chunk.css.map": "/static/css/main.82c92330.chunk.css.map",
+  "static/css/main.7827e1f0.chunk.css.map": "/static/css/main.7827e1f0.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.c1042b64ea469c1e5cf9df3f780043f5.js": "/precache-manifest.c1042b64ea469c1e5cf9df3f780043f5.js",
+  "precache-manifest.a8fc1948cea9834c52cd00efa3dcf0a2.js": "/precache-manifest.a8fc1948cea9834c52cd00efa3dcf0a2.js",
   "service-worker.js": "/service-worker.js"
 }
