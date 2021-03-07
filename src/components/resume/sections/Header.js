@@ -35,12 +35,12 @@ export default function Header() {
 
           <NavLink to="/game" className="header-button snake">Cozy snake game</NavLink>
 
-          <a className="header-button doc" href="resume.doc" download>
-            Resume DOC
+          <a className="header-button kumbhaka" href="https://keh9.github.io/kumbhaka/">
+            Kumbhaka
           </a>
 
-          <a className="header-button odt" href="resume.odt" download>
-            Resume ODT
+          <a className="header-button pdf" href="Web software developer Innokentiy Kuznetsov.pdf" download>
+            Resume PDF
           </a>
 
         </div>

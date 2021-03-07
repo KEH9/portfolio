@@ -75,25 +75,29 @@
 
 .header-button-container {
   margin-top: 20vh;
-  background-color: blue;
 }
 
 .header-button.snake {
   float: left;
-  width: 16.5vw;
-  margin-top: 2vw;
+  width: 16vw;
   background: #fd4800;
 }
 
-.header-button.doc, .header-button.odt {
+.header-button.kumbhaka {
   float: left;
-  width: 12.5vw;
-  margin-top: 2vw;
+  width: 12vw;
+  margin-left: 2vw;
+  background: #fd4800;
+}
+
+.header-button.pdf {
+  float: left;
+  width: 12vw;
   margin-left: 2vw;
   background: #000000;
 }
 
-a.doc:link, a.doc:visited, a.doc:active, a.odt:link, a.odt:visited, a.odt:active {
+a.pdf:link, a.pdf:visited, a.pdf:active, a.kumbhaka:link, a.kumbhaka:visited, a.kumbhaka:active {
   text-decoration: none;
   color: #fff;
 }

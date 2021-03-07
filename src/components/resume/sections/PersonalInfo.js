@@ -24,15 +24,6 @@ export default function PersonalInfo() {
 
       <div className="paragraph">
         <h3>
-          Birth date:
-        </h3>
-        <div>
-          02 january 1980
-        </div>
-      </div>
-
-      <div className="paragraph">
-        <h3>
           Current location:
         </h3>
         <div>

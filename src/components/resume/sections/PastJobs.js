@@ -44,9 +44,9 @@ export default class PastJobs extends Component {
         </div>
 
         <div className="paragraph">
-          <h3>2012 <img src={Slash} alt="/" className="slash" /> 2018</h3>
+          <h3>2012 <img src={Slash} alt="/" className="slash" /> present time</h3>
           <div>
-            <span className="job">Private entrepreneur.</span>
+            <span className="job">Private entrepreneur, volunteering.</span>
           </div>
         </div>
 

@@ -12,7 +12,7 @@ export default function Skills() {
         <div>
           Including ES2020, regular explanations, ShadowDOM, AJAX, design patterns etc.
           Feel confident with it. Can format code following Google JavaScript
-          style guide or Air BnB rules.
+          style guide or Air BnB rules. My JavaScript projects:&nbsp;<a href="https://keh9.github.io/kumbhaka">kumbhaka</a>
         </div>
       </div>
 
